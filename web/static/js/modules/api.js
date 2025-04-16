@@ -180,5 +180,40 @@ export const API = {
             body: JSON.stringify({ modelo: model })
         });
         return response.json();
-    }
+    },
+
+    /**
+     * @function getModel
+     * @description Fetches the current model for a given conversation
+     * @param {number} conversationId - ID of the conversation
+     * @returns {Promise<string>} Promise resolving with the model ID
+     */
+    async getModel(conversationId) {
+        console.log(`[API] Fetching current model for conversation ${conversationId}`);
+        const response = await fetch(`/api/modelo/${conversationId}`);
+        if (!response.ok) {
+            console.error(`[API] Error fetching model for conversation ${conversationId}:`, response.status);
+            throw new Error("Error fetching model");
+        }
+        const data = await response.json();
+        console.log(`[API] Model for conversation ${conversationId}:`, data.modelo);
+        return data.modelo;
+    },
+
+    /**
+     * @function loadModels
+     * @description Fetches the list of available models from the backend
+     * @returns {Promise<Array>} Promise resolving with the list of models
+     */
+    async loadModels() {
+        console.log('[API] Fetching available models from /api/models');
+        const response = await fetch("/api/models");
+        if (!response.ok) {
+            console.error('[API] Error fetching models:', response.status);
+            throw new Error("Error fetching models");
+        }
+        const data = await response.json();
+        console.log('[API] Models received:', data.models);
+        return data.models;
+    },
 };

@@ -41,7 +41,7 @@ export const UI = {
      * @description Renderiza el encabezado de una conversación
      * @param {Object} conv - Objeto de conversación
      */
-    renderConversationHeader(conv) {
+    async renderConversationHeader(conv) {
         this.chatHeader.innerHTML = "";
         const headerContainer = document.createElement("div");
         headerContainer.classList.add("header-container");
@@ -53,12 +53,38 @@ export const UI = {
         modelSelect.classList.add("modelo-selector");
         modelSelect.id = `modelo-selector-${conv.id}`;
 
-        const modelos = ["gpt-3.5-turbo", "gpt-4"];
+        // Obtener el modelo actualizado desde la API
+        let modeloActual = conv.modelo;
+        try {
+            modeloActual = await API.getModel(conv.id);
+            console.log(`[UI] Modelo actualizado para la conversación ${conv.id}:`, modeloActual);
+        } catch (error) {
+            console.error(`[UI] Error al obtener el modelo actualizado:`, error);
+        }
+
+        // Obtener modelos dinámicamente desde la API
+        let modelos = [];
+        try {
+            /**
+             * @description Solicita la lista de modelos disponibles a la API
+             */
+            console.log('[UI] Fetching models for selector...');
+            modelos = await API.loadModels();
+            console.log('[UI] Models loaded:', modelos);
+        } catch (error) {
+            console.error('[UI] Error fetching models:', error);
+            // Fallback a modelos hardcoded si falla la API
+            modelos = [
+                { id: "gpt-3.5-turbo" },
+                { id: "gpt-4" }
+            ];
+        }
+
         modelos.forEach((modelo) => {
             const option = document.createElement("option");
-            option.value = modelo;
-            option.textContent = modelo.toUpperCase();
-            if (conv.modelo === modelo) {
+            option.value = modelo.id || modelo;
+            option.textContent = (modelo.id || modelo).toUpperCase();
+            if (modeloActual === (modelo.id || modelo)) {
                 option.selected = true;
             }
             modelSelect.appendChild(option);
@@ -67,10 +93,14 @@ export const UI = {
         // Añadir event listener para el cambio de modelo
         modelSelect.addEventListener("change", async (e) => {
             try {
+                /**
+                 * @description Solicita la actualización del modelo de la conversación
+                 */
+                console.log(`[UI] Changing model for conversation ${conv.id} to`, e.target.value);
                 await API.updateModel(conv.id, e.target.value);
             } catch (error) {
-                console.error("Error al cambiar el modelo:", error);
-                e.target.value = conv.modelo; // Revertir el cambio si hay error
+                console.error("[UI] Error al cambiar el modelo:", error);
+                e.target.value = modeloActual; // Revertir el cambio si hay error
             }
         });
 
@@ -142,7 +172,6 @@ export const UI = {
 
         // Crear el elemento del mensaje
         const messageDiv = document.createElement("div");
-        /* messageDiv.classList.add("message", message.es_usuario === 1 ? "user" : "bot"); */
         messageDiv.classList.add("message", message.es_usuario ? "user" : "bot");
         
         try {
