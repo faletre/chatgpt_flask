@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['api_0',['api',['../namespacechatgpt__flask_1_1chatgpt__api_1_1api.html',1,'chatgpt_flask::chatgpt_api']]],
+  ['app_1',['app',['../namespacechatgpt__flask_1_1app.html',1,'chatgpt_flask']]],
+  ['chatgpt_5fapi_2',['chatgpt_api',['../namespacechatgpt__flask_1_1chatgpt__api.html',1,'chatgpt_flask']]],
+  ['chatgpt_5fflask_3',['chatgpt_flask',['../namespacechatgpt__flask.html',1,'']]],
+  ['close_5fdb_4',['close_db',['../namespacechatgpt__flask_1_1chatgpt__api_1_1db.html#ab1b40e236d71799fdfb34c26c7cf2867',1,'chatgpt_flask::chatgpt_api::db']]],
+  ['contar_5ftokens_5',['contar_tokens',['../namespaceopenai__service.html#a6e41e8e73b3f956d78cb2d573860d74b',1,'openai_service']]],
+  ['contexto_6',['contexto',['../namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1contexto.html',1,'chatgpt_flask::chatgpt_api::api']]],
+  ['contexto_2epy_7',['contexto.py',['../contexto_8py.html',1,'']]],
+  ['contexto_5fbp_8',['contexto_bp',['../namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1contexto.html#abf286e18c488389aab7a02373e0b3d91',1,'chatgpt_flask::chatgpt_api::api::contexto']]],
+  ['conversacion_9',['conversacion',['../namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1conversacion.html',1,'chatgpt_flask::chatgpt_api::api']]],
+  ['conversacion_2epy_10',['conversacion.py',['../conversacion_8py.html',1,'']]],
+  ['conversacion_5fbp_11',['conversacion_bp',['../namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1conversacion.html#a3b931afecce255ffad2992e97c447cf3',1,'chatgpt_flask::chatgpt_api::api::conversacion']]],
+  ['create_5fapp_12',['create_app',['../namespacechatgpt__flask_1_1app.html#aac5ad3a8ae567f93721ebef9fb8a022f',1,'chatgpt_flask::app']]],
+  ['db_13',['db',['../namespacechatgpt__flask_1_1chatgpt__api_1_1db.html',1,'chatgpt_flask::chatgpt_api']]],
+  ['mensaje_14',['mensaje',['../namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1mensaje.html',1,'chatgpt_flask::chatgpt_api::api']]],
+  ['modelo_15',['modelo',['../namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1modelo.html',1,'chatgpt_flask::chatgpt_api::api']]],
+  ['tools_16',['tools',['../namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1tools.html',1,'chatgpt_flask::chatgpt_api::api']]]
+];

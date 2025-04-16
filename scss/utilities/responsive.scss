@@ -1,0 +1,16 @@
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .chat-area {
+    width: 100%;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT - Conversaciones</title>
+    <!-- Cargar CSS de Prism.js primero -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-coy.css" rel="stylesheet">
+    <!-- Cargar Prism.js sin defer para asegurar que esté disponible -->
+    <script src="static/js/prism.min.js"></script>
+    <!-- Fuente de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style2.css">
+    <link rel="icon" href="static/images/favicon.ico">
+</head>
+<body>
+    <div class="container">
+        <!-- Panel izquierdo -->
+        <div class="sidebar">
+            <div class="sidebar-logo">
+                <img src="static/images/flaskchat-logo.png" alt="FlaskChat Logo" class="logo">
+            </div>
+            <button class="new-conversation-btn" id="new-conversation-btn">Nueva conversación</button>
+            <ul id="conversation-list" class="conversation-list">
+            </ul>
+        </div>
+
+        <!-- Área principal (derecha) -->
+        <div class="chat-area">
+
+            <div class="chat-header">
+                <div class="modelo-selector-container">
+                    <select id="modelo-selector">
+                        <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                        <option value="gpt-4">GPT-4</option>
+                    </select>
+                </div>
+                <div class="header-container">
+                    <h2>Pan de pita</h2>
+                    <label class="switch" id="context-switch-28">
+                         <input type="checkbox">
+                         <span class="slider"></span>
+                    </label>
+                    <span class="switch-label">Contexto Conversacional</span>
+               </div>
+            </div>
+            <div class="chat-content" id="chat-content">
+                <div class="message bot">Hola, ¿en qué puedo ayudarte hoy?</div>
+            </div>
+            <div class="chat-input">
+                <textarea id="message-input" rows="1" class="input-container" placeholder="Escribe un mensaje..."></textarea>
+                <div class="input-actions">
+                     <button id="send-btn">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script type="module" src="static/js/main.js"></script>
+</body>
+</html>

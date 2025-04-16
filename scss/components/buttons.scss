@@ -1,0 +1,44 @@
+.new-conversation-btn {
+    background-color: #16a085;
+    border: none;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .new-conversation-btn:hover {
+    background-color: #1abc9c;
+  }
+  
+  .edit-btn,
+  .delete-btn {
+    border: 1px solid #ccc;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+  
+  .edit-btn:hover,
+  .delete-btn:hover {
+    background-color: #f0f0f0;
+    border-color: #888;
+  }
+  
+  #send-btn {
+    padding: 8px 15px;
+    background-color: #16a085;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #send-btn:hover {
+    background-color: #1abc9c;
+  }
+  

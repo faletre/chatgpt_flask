@@ -1,0 +1,89 @@
+\hypertarget{namespacechatgpt__flask_1_1chatgpt__api_1_1db}{}\doxysection{chatgpt\+\_\+flask.\+chatgpt\+\_\+api.\+db Namespace Reference}
+\label{namespacechatgpt__flask_1_1chatgpt__api_1_1db}\index{chatgpt\_flask.chatgpt\_api.db@{chatgpt\_flask.chatgpt\_api.db}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacechatgpt__flask_1_1chatgpt__api_1_1db_ab1b40e236d71799fdfb34c26c7cf2867}{close\+\_\+db}} (error=None)
+\begin{DoxyCompactList}\small\item\em Cierra la conexión a la base de datos. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacechatgpt__flask_1_1chatgpt__api_1_1db_ab1243923ea1741005c0df055b2bb0c5c}{get\+\_\+db}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la conexión a la base de datos. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacechatgpt__flask_1_1chatgpt__api_1_1db_adb048507f3514e4670dfe72854fbc9ec}{init\+\_\+app}} (app)
+\begin{DoxyCompactList}\small\item\em Inicializa la aplicación Flask para gestionar la base de datos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacechatgpt__flask_1_1chatgpt__api_1_1db_a7303c8701b92326feadd5f3e56af1bd6}{DATABASE}} = os.\+path.\+join(os.\+path.\+dirname(\+\_\+\+\_\+file\+\_\+\+\_\+), \textquotesingle{}chatgpt.\+db\textquotesingle{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacechatgpt__flask_1_1chatgpt__api_1_1db_ab1b40e236d71799fdfb34c26c7cf2867}\label{namespacechatgpt__flask_1_1chatgpt__api_1_1db_ab1b40e236d71799fdfb34c26c7cf2867}} 
+\index{chatgpt\_flask.chatgpt\_api.db@{chatgpt\_flask.chatgpt\_api.db}!close\_db@{close\_db}}
+\index{close\_db@{close\_db}!chatgpt\_flask.chatgpt\_api.db@{chatgpt\_flask.chatgpt\_api.db}}
+\doxysubsubsection{\texorpdfstring{close\_db()}{close\_db()}}
+{\footnotesize\ttfamily def close\+\_\+db (\begin{DoxyParamCaption}\item[{}]{error = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Cierra la conexión a la base de datos. 
+
+Esta función cierra la conexión a la base de datos que se ha abierto durante la solicitud. La conexión se gestiona utilizando la variable global {\ttfamily g}. Si no hay una conexión abierta, no se realiza ninguna acción.
+
+
+\begin{DoxyParams}{Parameters}
+{\em error} & Opción de capturar un error (no se utiliza en este contexto).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+La función es llamada automáticamente al finalizar la solicitud, gracias a su integración en el ciclo de vida de Flask. 
+\end{DoxyNote}
+\mbox{\Hypertarget{namespacechatgpt__flask_1_1chatgpt__api_1_1db_ab1243923ea1741005c0df055b2bb0c5c}\label{namespacechatgpt__flask_1_1chatgpt__api_1_1db_ab1243923ea1741005c0df055b2bb0c5c}} 
+\index{chatgpt\_flask.chatgpt\_api.db@{chatgpt\_flask.chatgpt\_api.db}!get\_db@{get\_db}}
+\index{get\_db@{get\_db}!chatgpt\_flask.chatgpt\_api.db@{chatgpt\_flask.chatgpt\_api.db}}
+\doxysubsubsection{\texorpdfstring{get\_db()}{get\_db()}}
+{\footnotesize\ttfamily def get\+\_\+db (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene la conexión a la base de datos. 
+
+Esta función establece una conexión con la base de datos SQLite si no se ha creado una conexión previamente en el contexto de la aplicación. Si ya existe una conexión, se reutiliza para evitar conexiones duplicadas. Utiliza la variable global {\ttfamily g} para almacenar la conexión durante el ciclo de vida de la solicitud.
+
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item Conexión a la base de datos SQLite.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+La base de datos se encuentra en el archivo {\ttfamily chatgpt.\+db} en el directorio del proyecto. 
+\end{DoxyNote}
+\mbox{\Hypertarget{namespacechatgpt__flask_1_1chatgpt__api_1_1db_adb048507f3514e4670dfe72854fbc9ec}\label{namespacechatgpt__flask_1_1chatgpt__api_1_1db_adb048507f3514e4670dfe72854fbc9ec}} 
+\index{chatgpt\_flask.chatgpt\_api.db@{chatgpt\_flask.chatgpt\_api.db}!init\_app@{init\_app}}
+\index{init\_app@{init\_app}!chatgpt\_flask.chatgpt\_api.db@{chatgpt\_flask.chatgpt\_api.db}}
+\doxysubsubsection{\texorpdfstring{init\_app()}{init\_app()}}
+{\footnotesize\ttfamily def init\+\_\+app (\begin{DoxyParamCaption}\item[{}]{app }\end{DoxyParamCaption})}
+
+
+
+Inicializa la aplicación Flask para gestionar la base de datos. 
+
+Esta función se utiliza para integrar las funciones de la base de datos dentro del ciclo de vida de Flask. Registra la función {\ttfamily close\+\_\+db} para que se ejecute automáticamente cuando la solicitud termine, asegurando que la conexión a la base de datos se cierre correctamente.
+
+
+\begin{DoxyParams}{Parameters}
+{\em app} & Instancia de la aplicación Flask.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+La función {\ttfamily close\+\_\+db} se ejecutará automáticamente después de cada solicitud gracias a {\ttfamily teardown\+\_\+appcontext}. 
+\end{DoxyNote}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacechatgpt__flask_1_1chatgpt__api_1_1db_a7303c8701b92326feadd5f3e56af1bd6}\label{namespacechatgpt__flask_1_1chatgpt__api_1_1db_a7303c8701b92326feadd5f3e56af1bd6}} 
+\index{chatgpt\_flask.chatgpt\_api.db@{chatgpt\_flask.chatgpt\_api.db}!DATABASE@{DATABASE}}
+\index{DATABASE@{DATABASE}!chatgpt\_flask.chatgpt\_api.db@{chatgpt\_flask.chatgpt\_api.db}}
+\doxysubsubsection{\texorpdfstring{DATABASE}{DATABASE}}
+{\footnotesize\ttfamily DATABASE = os.\+path.\+join(os.\+path.\+dirname(\+\_\+\+\_\+file\+\_\+\+\_\+), \textquotesingle{}chatgpt.\+db\textquotesingle{})}
+

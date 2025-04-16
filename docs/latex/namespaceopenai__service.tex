@@ -1,0 +1,146 @@
+\hypertarget{namespaceopenai__service}{}\doxysection{openai\+\_\+service Namespace Reference}
+\label{namespaceopenai__service}\index{openai\_service@{openai\_service}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespaceopenai__service_a6e41e8e73b3f956d78cb2d573860d74b}{contar\+\_\+tokens}} (mensajes, modelo=\char`\"{}gpt-\/3.\+5-\/turbo\char`\"{})
+\begin{DoxyCompactList}\small\item\em Cuenta el número de tokens utilizados por un conjunto de mensajes. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceopenai__service_aca35d839d453220648871e34cfaaef7d}{obtener\+\_\+respuesta\+\_\+openai}} (mensajes\+\_\+historial, modelo)
+\begin{DoxyCompactList}\small\item\em Obtiene la respuesta de Open\+AI para un conjunto de mensajes. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceopenai__service_a6615e23675b68115fb667d4b59d18fe7}{obtener\+\_\+resumen\+\_\+historial}} (mensajes\+\_\+historial)
+\begin{DoxyCompactList}\small\item\em Obtiene un resumen del historial de mensajes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceopenai__service_a70651ad93f531b836bca3257d615c95e}{api\+\_\+key}}
+\item 
+\mbox{\hyperlink{namespaceopenai__service_a0b14e488ae28d98d262453f3e9cd6e4d}{logger}} = logging.\+get\+Logger(\+\_\+\+\_\+name\+\_\+\+\_\+)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceopenai__service_a6e41e8e73b3f956d78cb2d573860d74b}\label{namespaceopenai__service_a6e41e8e73b3f956d78cb2d573860d74b}} 
+\index{openai\_service@{openai\_service}!contar\_tokens@{contar\_tokens}}
+\index{contar\_tokens@{contar\_tokens}!openai\_service@{openai\_service}}
+\doxysubsubsection{\texorpdfstring{contar\_tokens()}{contar\_tokens()}}
+{\footnotesize\ttfamily def contar\+\_\+tokens (\begin{DoxyParamCaption}\item[{}]{mensajes,  }\item[{}]{modelo = {\ttfamily \char`\"{}gpt-\/3.5-\/turbo\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Cuenta el número de tokens utilizados por un conjunto de mensajes. 
+
+Esta función calcula el número de tokens necesarios para enviar un conjunto de mensajes a la API de Open\+AI. El número de tokens es importante para determinar si se excede el límite de tokens del modelo. La función toma en cuenta el modelo utilizado, dado que la codificación y el número de tokens varían entre diferentes modelos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mensajes} & Lista de diccionarios que contienen el historial de mensajes. Cada mensaje debe tener un campo {\ttfamily content} con el contenido del mensaje.\\
+\hline
+{\em modelo} & Nombre del modelo de Open\+AI que se utilizará para calcular los tokens (e.\+g., \char`\"{}gpt-\/3.\+5-\/turbo\char`\"{}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item Integer que representa el número total de tokens utilizados por los mensajes.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+La función utiliza el paquete {\ttfamily tiktoken} para calcular los tokens de manera precisa.
+\end{DoxyNote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Ejemplo de uso:}
+\DoxyCodeLine{tokens = \mbox{\hyperlink{namespaceopenai__service_a6e41e8e73b3f956d78cb2d573860d74b}{contar\_tokens}}(mensajes\_historial, \textcolor{stringliteral}{"{}gpt-\/3.5-\/turbo"{}})}
+
+\end{DoxyCode}
+ \mbox{\Hypertarget{namespaceopenai__service_aca35d839d453220648871e34cfaaef7d}\label{namespaceopenai__service_aca35d839d453220648871e34cfaaef7d}} 
+\index{openai\_service@{openai\_service}!obtener\_respuesta\_openai@{obtener\_respuesta\_openai}}
+\index{obtener\_respuesta\_openai@{obtener\_respuesta\_openai}!openai\_service@{openai\_service}}
+\doxysubsubsection{\texorpdfstring{obtener\_respuesta\_openai()}{obtener\_respuesta\_openai()}}
+{\footnotesize\ttfamily def obtener\+\_\+respuesta\+\_\+openai (\begin{DoxyParamCaption}\item[{}]{mensajes\+\_\+historial,  }\item[{}]{modelo }\end{DoxyParamCaption})}
+
+
+
+Obtiene la respuesta de Open\+AI para un conjunto de mensajes. 
+
+Esta función envía el historial de mensajes a la API de Open\+AI para obtener una respuesta del modelo especificado. Se utiliza el modelo indicado para generar una respuesta basada en los mensajes previos. El parámetro {\ttfamily modelo} puede ser un modelo como {\ttfamily gpt-\/3.\+5-\/turbo} o {\ttfamily gpt-\/4}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mensajes\+\_\+historial} & Lista de diccionarios que contienen el historial de mensajes. Cada mensaje debe tener un campo {\ttfamily role} (\textquotesingle{}user\textquotesingle{} o \textquotesingle{}assistant\textquotesingle{}) y un campo {\ttfamily content} con el contenido del mensaje.\\
+\hline
+{\em modelo} & Nombre del modelo de Open\+AI que se utilizará para generar la respuesta (e.\+g., \char`\"{}gpt-\/3.\+5-\/turbo\char`\"{}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item String con la respuesta generada por el modelo de Open\+AI.
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & Si ocurre un error al interactuar con la API de Open\+AI, se registrará el error y se devolverá un mensaje indicando el fallo.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyNote}{Note}
+La función realiza una solicitud a Open\+AI usando el método {\ttfamily openai.\+chat.\+completions.\+create}, y tiene configurado un límite de tokens de 550.
+\end{DoxyNote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Ejemplo de uso:}
+\DoxyCodeLine{respuesta = \mbox{\hyperlink{namespaceopenai__service_aca35d839d453220648871e34cfaaef7d}{obtener\_respuesta\_openai}}(mensajes\_historial, \textcolor{stringliteral}{"{}gpt-\/3.5-\/turbo"{}})}
+
+\end{DoxyCode}
+ \mbox{\Hypertarget{namespaceopenai__service_a6615e23675b68115fb667d4b59d18fe7}\label{namespaceopenai__service_a6615e23675b68115fb667d4b59d18fe7}} 
+\index{openai\_service@{openai\_service}!obtener\_resumen\_historial@{obtener\_resumen\_historial}}
+\index{obtener\_resumen\_historial@{obtener\_resumen\_historial}!openai\_service@{openai\_service}}
+\doxysubsubsection{\texorpdfstring{obtener\_resumen\_historial()}{obtener\_resumen\_historial()}}
+{\footnotesize\ttfamily def obtener\+\_\+resumen\+\_\+historial (\begin{DoxyParamCaption}\item[{}]{mensajes\+\_\+historial }\end{DoxyParamCaption})}
+
+
+
+Obtiene un resumen del historial de mensajes. 
+
+Esta función envía el historial de mensajes a la API de Open\+AI para obtener un resumen de los mensajes de manera concisa y clara. El resumen se realiza utilizando el modelo {\ttfamily gpt-\/3.\+5-\/turbo}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mensajes\+\_\+historial} & Lista de diccionarios que contienen el historial de mensajes. Cada mensaje debe tener un campo {\ttfamily role} (\textquotesingle{}user\textquotesingle{} o \textquotesingle{}assistant\textquotesingle{}) y un campo {\ttfamily content} con el contenido del mensaje.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item String con el resumen generado por el modelo de Open\+AI.
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & Si ocurre un error al interactuar con la API de Open\+AI, se registrará el error y se devolverá un mensaje indicando el fallo.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyNote}{Note}
+El modelo utilizado para resumir es {\ttfamily gpt-\/3.\+5-\/turbo} y tiene configurado un límite de tokens de 500.
+\end{DoxyNote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Ejemplo de uso:}
+\DoxyCodeLine{resumen = \mbox{\hyperlink{namespaceopenai__service_a6615e23675b68115fb667d4b59d18fe7}{obtener\_resumen\_historial}}(mensajes\_historial)}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceopenai__service_a70651ad93f531b836bca3257d615c95e}\label{namespaceopenai__service_a70651ad93f531b836bca3257d615c95e}} 
+\index{openai\_service@{openai\_service}!api\_key@{api\_key}}
+\index{api\_key@{api\_key}!openai\_service@{openai\_service}}
+\doxysubsubsection{\texorpdfstring{api\_key}{api\_key}}
+{\footnotesize\ttfamily api\+\_\+key}
+
+\mbox{\Hypertarget{namespaceopenai__service_a0b14e488ae28d98d262453f3e9cd6e4d}\label{namespaceopenai__service_a0b14e488ae28d98d262453f3e9cd6e4d}} 
+\index{openai\_service@{openai\_service}!logger@{logger}}
+\index{logger@{logger}!openai\_service@{openai\_service}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily logger = logging.\+get\+Logger(\+\_\+\+\_\+name\+\_\+\+\_\+)}
+

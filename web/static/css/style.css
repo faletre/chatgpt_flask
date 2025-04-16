@@ -1,0 +1,437 @@
+/* Reset de algunos márgenes y padding por defecto */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 150px;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Historial de conversaciones */
+.conversacion-lista {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.conversacion-item {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.conversacion-item:hover {
+  transform: scale(1.02);
+}
+
+.conversacion-item .nombre {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.conversacion-item .fecha {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.menu-contexto {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: none;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+}
+
+.conversacion-item:hover .menu-contexto {
+  display: block;
+}
+
+.menu-contexto button {
+  background: transparent;
+  color: #007bff;
+  border: none;
+  padding: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.menu-contexto button:hover {
+  color: #0056b3;
+}
+
+/* Responsividad */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  textarea {
+    min-height: 100px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .conversacion-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .conversacion-item .nombre {
+    font-size: 1.1rem;
+  }
+
+  .conversacion-item .fecha {
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .conversacion-item .nombre {
+    font-size: 1rem;
+  }
+
+  .conversacion-item .fecha {
+    font-size: 0.7rem;
+  }
+
+  button {
+    padding: 8px;
+  }
+}
+
+/* Reset de algunos márgenes y padding por defecto */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 150px;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Historial de conversaciones */
+.conversacion-lista {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.conversacion-item {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.conversacion-item:hover {
+  transform: scale(1.02);
+}
+
+.conversacion-item .nombre {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.conversacion-item .fecha {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.menu-contexto {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: none;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+}
+
+.conversacion-item:hover .menu-contexto {
+  display: block;
+}
+
+.menu-contexto button {
+  background: transparent;
+  color: #007bff;
+  border: none;
+  padding: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.menu-contexto button:hover {
+  color: #0056b3;
+}
+
+/* Interpretación de Markdown */
+.markdown-content {
+  line-height: 1.8;
+}
+
+.markdown-content h1, .markdown-content h2, .markdown-content h3 {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content p {
+  margin-bottom: 1rem;
+}
+
+.markdown-content blockquote {
+  background-color: #f9f9f9;
+  border-left: 4px solid #007bff;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  font-style: italic;
+  color: #555;
+}
+
+.markdown-content ul, .markdown-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.markdown-content li {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.markdown-content a:hover {
+  text-decoration: underline;
+}
+
+.markdown-content strong {
+  font-weight: 600;
+}
+
+.markdown-content em {
+  font-style: italic;
+}
+
+.markdown-content code {
+  background-color: #f1f1f1;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.markdown-content pre {
+  background-color: #f1f1f1;
+  padding: 1rem;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Responsividad */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  textarea {
+    min-height: 100px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .conversacion-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .conversacion-item .nombre {
+    font-size: 1.1rem;
+  }
+
+  .conversacion-item .fecha {
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .conversacion-item .nombre {
+    font-size: 1rem;
+  }
+
+  .conversacion-item .fecha {
+    font-size: 0.7rem;
+  }
+
+  button {
+    padding: 8px;
+  }
+}

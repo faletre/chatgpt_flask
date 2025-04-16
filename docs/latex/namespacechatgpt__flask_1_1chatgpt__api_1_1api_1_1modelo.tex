@@ -1,0 +1,119 @@
+\hypertarget{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1modelo}{}\doxysection{chatgpt\+\_\+flask.\+chatgpt\+\_\+api.\+api.\+modelo Namespace Reference}
+\label{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1modelo}\index{chatgpt\_flask.chatgpt\_api.api.modelo@{chatgpt\_flask.chatgpt\_api.api.modelo}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1modelo_a6c9b8dc5272275902c3cb92483391e29}{actualizar\+\_\+modelo}} (id)
+\begin{DoxyCompactList}\small\item\em Actualiza el modelo asociado a una conversación específica. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1modelo_ad943095a5def73957b825fdae1deaa09}{obtener\+\_\+modelo}} (id)
+\begin{DoxyCompactList}\small\item\em Recupera el modelo asociado a una conversación específica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1modelo_a82e918f31f8e03fd27bf2f7f5c806663}{modelo\+\_\+bp}} = Blueprint(\textquotesingle{}modelo\textquotesingle{}, \+\_\+\+\_\+name\+\_\+\+\_\+)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1modelo_a6c9b8dc5272275902c3cb92483391e29}\label{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1modelo_a6c9b8dc5272275902c3cb92483391e29}} 
+\index{chatgpt\_flask.chatgpt\_api.api.modelo@{chatgpt\_flask.chatgpt\_api.api.modelo}!actualizar\_modelo@{actualizar\_modelo}}
+\index{actualizar\_modelo@{actualizar\_modelo}!chatgpt\_flask.chatgpt\_api.api.modelo@{chatgpt\_flask.chatgpt\_api.api.modelo}}
+\doxysubsubsection{\texorpdfstring{actualizar\_modelo()}{actualizar\_modelo()}}
+{\footnotesize\ttfamily def actualizar\+\_\+modelo (\begin{DoxyParamCaption}\item[{}]{id }\end{DoxyParamCaption})}
+
+
+
+Actualiza el modelo asociado a una conversación específica. 
+
+Este endpoint permite actualizar el modelo de una conversación almacenada en la base de datos. Se valida que el nuevo modelo sea uno de los permitidos ({\ttfamily gpt-\/3.\+5-\/turbo} o {\ttfamily gpt-\/4}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador único de la conversación. \\
+\hline
+{\em modelo} & El modelo a actualizar, que debe ser uno de los modelos permitidos.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item 200 OK\+: Si el modelo se actualiza correctamente, devuelve un mensaje de éxito y el nuevo modelo.
+\item 400 Bad Request\+: Si el modelo proporcionado no es válido.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Los modelos permitidos son\+: {\ttfamily gpt-\/3.\+5-\/turbo} y {\ttfamily gpt-\/4}. Si se intenta actualizar con un modelo diferente, se devuelve un error 400.
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & Lanza una excepción si ocurre un error al actualizar la base de datos.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyPrecond}{Precondition}
+La conversación debe existir en la base de datos con el ID proporcionado. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+El modelo de la conversación será actualizado con el nuevo modelo.
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Ejemplo de solicitud:}
+\DoxyCodeLine{PUT /api/modelo/1}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}modelo"{}}: \textcolor{stringliteral}{"{}gpt-\/4"{}}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{Respuesta esperada:}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}mensaje"{}}: \textcolor{stringliteral}{"{}Modelo actualizado correctamente"{}},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}modelo"{}}: \textcolor{stringliteral}{"{}gpt-\/4"{}}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \mbox{\Hypertarget{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1modelo_ad943095a5def73957b825fdae1deaa09}\label{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1modelo_ad943095a5def73957b825fdae1deaa09}} 
+\index{chatgpt\_flask.chatgpt\_api.api.modelo@{chatgpt\_flask.chatgpt\_api.api.modelo}!obtener\_modelo@{obtener\_modelo}}
+\index{obtener\_modelo@{obtener\_modelo}!chatgpt\_flask.chatgpt\_api.api.modelo@{chatgpt\_flask.chatgpt\_api.api.modelo}}
+\doxysubsubsection{\texorpdfstring{obtener\_modelo()}{obtener\_modelo()}}
+{\footnotesize\ttfamily def obtener\+\_\+modelo (\begin{DoxyParamCaption}\item[{}]{id }\end{DoxyParamCaption})}
+
+
+
+Recupera el modelo asociado a una conversación específica. 
+
+Este endpoint permite obtener el modelo que está asociado a una conversación en la base de datos. La búsqueda se realiza mediante el ID de la conversación.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador único de la conversación.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item 200 OK\+: Si la conversación se encuentra, devuelve el modelo asociado.
+\item 404 Not Found\+: Si no se encuentra una conversación con el ID proporcionado.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Si el ID de la conversación no existe en la base de datos, se retornará un error 404.
+\end{DoxyNote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Ejemplo de solicitud:}
+\DoxyCodeLine{GET /api/modelo/1}
+\DoxyCodeLine{}
+\DoxyCodeLine{Respuesta esperada:}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}modelo"{}}: \textcolor{stringliteral}{"{}gpt-\/3.5-\/turbo"{}}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1modelo_a82e918f31f8e03fd27bf2f7f5c806663}\label{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1modelo_a82e918f31f8e03fd27bf2f7f5c806663}} 
+\index{chatgpt\_flask.chatgpt\_api.api.modelo@{chatgpt\_flask.chatgpt\_api.api.modelo}!modelo\_bp@{modelo\_bp}}
+\index{modelo\_bp@{modelo\_bp}!chatgpt\_flask.chatgpt\_api.api.modelo@{chatgpt\_flask.chatgpt\_api.api.modelo}}
+\doxysubsubsection{\texorpdfstring{modelo\_bp}{modelo\_bp}}
+{\footnotesize\ttfamily modelo\+\_\+bp = Blueprint(\textquotesingle{}modelo\textquotesingle{}, \+\_\+\+\_\+name\+\_\+\+\_\+)}
+

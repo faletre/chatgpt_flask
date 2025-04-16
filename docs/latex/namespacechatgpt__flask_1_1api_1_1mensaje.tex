@@ -1,0 +1,110 @@
+\hypertarget{namespacechatgpt__flask_1_1api_1_1mensaje}{}\doxysection{chatgpt\+\_\+flask.\+api.\+mensaje Namespace Reference}
+\label{namespacechatgpt__flask_1_1api_1_1mensaje}\index{chatgpt\_flask.api.mensaje@{chatgpt\_flask.api.mensaje}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacechatgpt__flask_1_1api_1_1mensaje_a2f12077018c76eff02888e507e3b093b}{enviar\+\_\+mensaje}} (id)
+\begin{DoxyCompactList}\small\item\em Envía un mensaje de usuario y obtiene la respuesta del asistente. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacechatgpt__flask_1_1api_1_1mensaje_ae6a904fe7d9c83cf4f64f1aa57d2f2cb}{obtener\+\_\+mensajes}} (id)
+\begin{DoxyCompactList}\small\item\em Recupera los mensajes de una conversación específica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacechatgpt__flask_1_1api_1_1mensaje_ac774d9994b9419948b8fed8940b174cb}{mensaje\+\_\+bp}} = Blueprint(\textquotesingle{}mensaje\textquotesingle{}, \+\_\+\+\_\+name\+\_\+\+\_\+)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacechatgpt__flask_1_1api_1_1mensaje_a2f12077018c76eff02888e507e3b093b}\label{namespacechatgpt__flask_1_1api_1_1mensaje_a2f12077018c76eff02888e507e3b093b}} 
+\index{chatgpt\_flask.api.mensaje@{chatgpt\_flask.api.mensaje}!enviar\_mensaje@{enviar\_mensaje}}
+\index{enviar\_mensaje@{enviar\_mensaje}!chatgpt\_flask.api.mensaje@{chatgpt\_flask.api.mensaje}}
+\doxysubsubsection{\texorpdfstring{enviar\_mensaje()}{enviar\_mensaje()}}
+{\footnotesize\ttfamily def enviar\+\_\+mensaje (\begin{DoxyParamCaption}\item[{}]{id }\end{DoxyParamCaption})}
+
+
+
+Envía un mensaje de usuario y obtiene la respuesta del asistente. 
+
+Este endpoint permite enviar un mensaje de usuario a la conversación especificada. Después de recibir el mensaje, el sistema genera una respuesta utilizando la API de Open\+AI. Si el contexto está activado, se conserva el historial de mensajes, y si el número de tokens excede el límite, el historial se resume. El modelo de conversación también se consulta antes de generar una respuesta.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador único de la conversación a la que se está enviando el mensaje.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item 200 OK\+: Si el mensaje es procesado correctamente, devuelve la respuesta del asistente en formato JSON.
+\item 400 Bad Request\+: Si el mensaje proporcionado está vacío.
+\item 500 Internal Server Error\+: Si ocurre un error al comunicarse con Open\+AI.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Si el contexto está activado en la conversación, el sistema almacenará y procesará el historial de mensajes. Si se excede el límite de tokens, el historial será resumido para ajustarse al límite.
+\end{DoxyNote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Ejemplo de solicitud:}
+\DoxyCodeLine{POST /api/chat/123}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}mensaje"{}}: \textcolor{stringliteral}{"{}¿Cómo puedo integrar la API de OpenAI?"{}}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{Respuesta esperada:}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}respuesta"{}}: \textcolor{stringliteral}{"{}Para integrar la API de OpenAI, necesitas obtener una clave de API..."{}}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \mbox{\Hypertarget{namespacechatgpt__flask_1_1api_1_1mensaje_ae6a904fe7d9c83cf4f64f1aa57d2f2cb}\label{namespacechatgpt__flask_1_1api_1_1mensaje_ae6a904fe7d9c83cf4f64f1aa57d2f2cb}} 
+\index{chatgpt\_flask.api.mensaje@{chatgpt\_flask.api.mensaje}!obtener\_mensajes@{obtener\_mensajes}}
+\index{obtener\_mensajes@{obtener\_mensajes}!chatgpt\_flask.api.mensaje@{chatgpt\_flask.api.mensaje}}
+\doxysubsubsection{\texorpdfstring{obtener\_mensajes()}{obtener\_mensajes()}}
+{\footnotesize\ttfamily def obtener\+\_\+mensajes (\begin{DoxyParamCaption}\item[{}]{id }\end{DoxyParamCaption})}
+
+
+
+Recupera los mensajes de una conversación específica. 
+
+Este endpoint permite obtener todos los mensajes asociados a una conversación específica en orden de fecha de creación. Devuelve tanto los mensajes de los usuarios como los del sistema (si existen).
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador único de la conversación cuyos mensajes se desean obtener.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item 200 OK\+: Devuelve una lista de mensajes de la conversación en formato JSON.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+El historial de mensajes se devuelve ordenado por la fecha de creación de cada mensaje. Incluye información de si el mensaje es del usuario o de Open\+AI (es\+\_\+usuario)
+\end{DoxyNote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Ejemplo de solicitud:}
+\DoxyCodeLine{GET /api/chat/123}
+\DoxyCodeLine{}
+\DoxyCodeLine{Respuesta esperada:}
+\DoxyCodeLine{[}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}mensaje"{}}: \textcolor{stringliteral}{"{}Hola, ¿cómo estás?"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}es\_usuario"{}}: true,}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}fecha\_creacion"{}}: \textcolor{stringliteral}{"{}2025-\/04-\/14T10:00:00"{}}}
+\DoxyCodeLine{    \},}
+\DoxyCodeLine{    ...}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacechatgpt__flask_1_1api_1_1mensaje_ac774d9994b9419948b8fed8940b174cb}\label{namespacechatgpt__flask_1_1api_1_1mensaje_ac774d9994b9419948b8fed8940b174cb}} 
+\index{chatgpt\_flask.api.mensaje@{chatgpt\_flask.api.mensaje}!mensaje\_bp@{mensaje\_bp}}
+\index{mensaje\_bp@{mensaje\_bp}!chatgpt\_flask.api.mensaje@{chatgpt\_flask.api.mensaje}}
+\doxysubsubsection{\texorpdfstring{mensaje\_bp}{mensaje\_bp}}
+{\footnotesize\ttfamily mensaje\+\_\+bp = Blueprint(\textquotesingle{}mensaje\textquotesingle{}, \+\_\+\+\_\+name\+\_\+\+\_\+)}
+

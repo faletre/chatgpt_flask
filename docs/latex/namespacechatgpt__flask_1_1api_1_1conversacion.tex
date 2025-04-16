@@ -1,0 +1,101 @@
+\hypertarget{namespacechatgpt__flask_1_1api_1_1conversacion}{}\doxysection{chatgpt\+\_\+flask.\+api.\+conversacion Namespace Reference}
+\label{namespacechatgpt__flask_1_1api_1_1conversacion}\index{chatgpt\_flask.api.conversacion@{chatgpt\_flask.api.conversacion}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacechatgpt__flask_1_1api_1_1conversacion_a945bc8a874e65935eb3b75b86e35b02b}{historial}} ()
+\begin{DoxyCompactList}\small\item\em Recupera el historial de todas las conversaciones. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacechatgpt__flask_1_1api_1_1conversacion_a99478dde649849a30ee38f78fcfcb193}{nueva\+\_\+conversacion}} ()
+\begin{DoxyCompactList}\small\item\em Crea una nueva conversación en la base de datos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacechatgpt__flask_1_1api_1_1conversacion_a3b931afecce255ffad2992e97c447cf3}{conversacion\+\_\+bp}} = Blueprint(\textquotesingle{}conversacion\textquotesingle{}, \+\_\+\+\_\+name\+\_\+\+\_\+)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacechatgpt__flask_1_1api_1_1conversacion_a945bc8a874e65935eb3b75b86e35b02b}\label{namespacechatgpt__flask_1_1api_1_1conversacion_a945bc8a874e65935eb3b75b86e35b02b}} 
+\index{chatgpt\_flask.api.conversacion@{chatgpt\_flask.api.conversacion}!historial@{historial}}
+\index{historial@{historial}!chatgpt\_flask.api.conversacion@{chatgpt\_flask.api.conversacion}}
+\doxysubsubsection{\texorpdfstring{historial()}{historial()}}
+{\footnotesize\ttfamily def historial (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Recupera el historial de todas las conversaciones. 
+
+Este endpoint devuelve una lista de todas las conversaciones almacenadas en la base de datos, ordenadas por fecha de creación en orden descendente. Cada conversación incluye su ID, nombre y fecha de creación.
+
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item 200 OK\+: Devuelve un historial de conversaciones en formato JSON.
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Ejemplo de solicitud:}
+\DoxyCodeLine{GET /api/historial}
+\DoxyCodeLine{}
+\DoxyCodeLine{Respuesta esperada:}
+\DoxyCodeLine{[}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}id"{}}: 123,}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}nombre"{}}: \textcolor{stringliteral}{"{}Mi Conversación"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}fecha\_creacion"{}}: \textcolor{stringliteral}{"{}2025-\/04-\/14T10:00:00"{}}}
+\DoxyCodeLine{    \},}
+\DoxyCodeLine{    ...}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+ \mbox{\Hypertarget{namespacechatgpt__flask_1_1api_1_1conversacion_a99478dde649849a30ee38f78fcfcb193}\label{namespacechatgpt__flask_1_1api_1_1conversacion_a99478dde649849a30ee38f78fcfcb193}} 
+\index{chatgpt\_flask.api.conversacion@{chatgpt\_flask.api.conversacion}!nueva\_conversacion@{nueva\_conversacion}}
+\index{nueva\_conversacion@{nueva\_conversacion}!chatgpt\_flask.api.conversacion@{chatgpt\_flask.api.conversacion}}
+\doxysubsubsection{\texorpdfstring{nueva\_conversacion()}{nueva\_conversacion()}}
+{\footnotesize\ttfamily def nueva\+\_\+conversacion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Crea una nueva conversación en la base de datos. 
+
+Este endpoint permite crear una nueva conversación. El nombre de la conversación se puede especificar en la solicitud, o se asignará el nombre \char`\"{}\+Nueva Conversación\char`\"{} por defecto si no se proporciona. La nueva conversación se almacena en la base de datos y se devuelve el ID generado y el nombre asignado.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nombre} & Nombre de la nueva conversación. Si no se proporciona, se utiliza el valor predeterminado \char`\"{}\+Nueva Conversación\char`\"{}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item 201 Created\+: Si la conversación se crea correctamente, devuelve el ID y el nombre de la nueva conversación.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+El nombre de la conversación es opcional. Si no se especifica en la solicitud, se utilizará el valor predeterminado.
+\end{DoxyNote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Ejemplo de solicitud:}
+\DoxyCodeLine{POST /api/chat}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}nombre"{}}: \textcolor{stringliteral}{"{}Mi Conversación"{}}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{Respuesta esperada:}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}id"{}}: 123,}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}nombre"{}}: \textcolor{stringliteral}{"{}Mi Conversación"{}}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacechatgpt__flask_1_1api_1_1conversacion_a3b931afecce255ffad2992e97c447cf3}\label{namespacechatgpt__flask_1_1api_1_1conversacion_a3b931afecce255ffad2992e97c447cf3}} 
+\index{chatgpt\_flask.api.conversacion@{chatgpt\_flask.api.conversacion}!conversacion\_bp@{conversacion\_bp}}
+\index{conversacion\_bp@{conversacion\_bp}!chatgpt\_flask.api.conversacion@{chatgpt\_flask.api.conversacion}}
+\doxysubsubsection{\texorpdfstring{conversacion\_bp}{conversacion\_bp}}
+{\footnotesize\ttfamily conversacion\+\_\+bp = Blueprint(\textquotesingle{}conversacion\textquotesingle{}, \+\_\+\+\_\+name\+\_\+\+\_\+)}
+

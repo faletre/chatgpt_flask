@@ -1,0 +1,161 @@
+\begin{theindex}
+
+  \item {\_\_init\_\_.py}, \hyperpage{26}
+
+  \indexspace
+
+  \item {actualizar\_modelo}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.modelo}, \hyperpage{14}
+  \item {api\_key}
+    \subitem {openai\_service}, \hyperpage{23}
+  \item {app}
+    \subitem {chatgpt\_flask.app}, \hyperpage{8}
+  \item {app.py}, \hyperpage{25}
+
+  \indexspace
+
+  \item {chatgpt\_api/\_\_init\_\_.py}, \hyperpage{26}
+  \item {chatgpt\_api/api/\_\_init\_\_.py}, \hyperpage{26}
+  \item {chatgpt\_api/api/contexto.py}, \hyperpage{26}
+  \item {chatgpt\_api/api/conversacion.py}, \hyperpage{27}
+  \item {chatgpt\_api/api/mensaje.py}, \hyperpage{27}
+  \item {chatgpt\_api/api/modelo.py}, \hyperpage{28}
+  \item {chatgpt\_api/api/tools.py}, \hyperpage{28}
+  \item {chatgpt\_api/db.py}, \hyperpage{29}
+  \item {chatgpt\_api/services/openai\_service.py}, \hyperpage{29}
+  \item {chatgpt\_flask}, \hyperpage{7}
+  \item {chatgpt\_flask.app}, \hyperpage{7}
+    \subitem {app}, \hyperpage{8}
+    \subitem {create\_app}, \hyperpage{8}
+    \subitem {debug}, \hyperpage{8}
+    \subitem {host}, \hyperpage{8}
+    \subitem {port}, \hyperpage{8}
+  \item {chatgpt\_flask.chatgpt\_api}, \hyperpage{8}
+  \item {chatgpt\_flask.chatgpt\_api.api}, \hyperpage{9}
+  \item {chatgpt\_flask.chatgpt\_api.api.contexto}, \hyperpage{9}
+    \subitem {contexto\_bp}, \hyperpage{10}
+    \subitem {obtener\_contexto}, \hyperpage{9}
+    \subitem {toggle\_contexto}, \hyperpage{10}
+  \item {chatgpt\_flask.chatgpt\_api.api.conversacion}, \hyperpage{11}
+    \subitem {conversacion\_bp}, \hyperpage{12}
+    \subitem {historial}, \hyperpage{11}
+    \subitem {nueva\_conversacion}, \hyperpage{11}
+  \item {chatgpt\_flask.chatgpt\_api.api.mensaje}, \hyperpage{12}
+    \subitem {enviar\_mensaje}, \hyperpage{12}
+    \subitem {mensaje\_bp}, \hyperpage{14}
+    \subitem {obtener\_mensajes}, \hyperpage{13}
+  \item {chatgpt\_flask.chatgpt\_api.api.modelo}, \hyperpage{14}
+    \subitem {actualizar\_modelo}, \hyperpage{14}
+    \subitem {modelo\_bp}, \hyperpage{16}
+    \subitem {obtener\_modelo}, \hyperpage{15}
+  \item {chatgpt\_flask.chatgpt\_api.api.tools}, \hyperpage{16}
+    \subitem {delete\_file\_from\_openai}, \hyperpage{16}
+    \subitem {list\_openai\_files}, \hyperpage{17}
+    \subitem {tools\_bp}, \hyperpage{19}
+    \subitem {upload\_file\_to\_openai}, \hyperpage{18}
+  \item {chatgpt\_flask.chatgpt\_api.db}, \hyperpage{19}
+    \subitem {close\_db}, \hyperpage{19}
+    \subitem {DATABASE}, \hyperpage{21}
+    \subitem {get\_db}, \hyperpage{20}
+    \subitem {init\_app}, \hyperpage{20}
+  \item {close\_db}
+    \subitem {chatgpt\_flask.chatgpt\_api.db}, \hyperpage{19}
+  \item {contar\_tokens}
+    \subitem {openai\_service}, \hyperpage{21}
+  \item {contexto\_bp}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.contexto}, \hyperpage{10}
+  \item {conversacion\_bp}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.conversacion}, 
+		\hyperpage{12}
+  \item {create\_app}
+    \subitem {chatgpt\_flask.app}, \hyperpage{8}
+
+  \indexspace
+
+  \item {DATABASE}
+    \subitem {chatgpt\_flask.chatgpt\_api.db}, \hyperpage{21}
+  \item {debug}
+    \subitem {chatgpt\_flask.app}, \hyperpage{8}
+  \item {delete\_file\_from\_openai}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.tools}, \hyperpage{16}
+
+  \indexspace
+
+  \item {enviar\_mensaje}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.mensaje}, \hyperpage{12}
+
+  \indexspace
+
+  \item {get\_db}
+    \subitem {chatgpt\_flask.chatgpt\_api.db}, \hyperpage{20}
+
+  \indexspace
+
+  \item {historial}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.conversacion}, 
+		\hyperpage{11}
+  \item {host}
+    \subitem {chatgpt\_flask.app}, \hyperpage{8}
+
+  \indexspace
+
+  \item {init\_app}
+    \subitem {chatgpt\_flask.chatgpt\_api.db}, \hyperpage{20}
+
+  \indexspace
+
+  \item {list\_openai\_files}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.tools}, \hyperpage{17}
+  \item {logger}
+    \subitem {openai\_service}, \hyperpage{23}
+
+  \indexspace
+
+  \item {mensaje\_bp}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.mensaje}, \hyperpage{14}
+  \item {modelo\_bp}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.modelo}, \hyperpage{16}
+
+  \indexspace
+
+  \item {nueva\_conversacion}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.conversacion}, 
+		\hyperpage{11}
+
+  \indexspace
+
+  \item {obtener\_contexto}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.contexto}, \hyperpage{9}
+  \item {obtener\_mensajes}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.mensaje}, \hyperpage{13}
+  \item {obtener\_modelo}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.modelo}, \hyperpage{15}
+  \item {obtener\_respuesta\_openai}
+    \subitem {openai\_service}, \hyperpage{22}
+  \item {obtener\_resumen\_historial}
+    \subitem {openai\_service}, \hyperpage{22}
+  \item {openai\_service}, \hyperpage{21}
+    \subitem {api\_key}, \hyperpage{23}
+    \subitem {contar\_tokens}, \hyperpage{21}
+    \subitem {logger}, \hyperpage{23}
+    \subitem {obtener\_respuesta\_openai}, \hyperpage{22}
+    \subitem {obtener\_resumen\_historial}, \hyperpage{22}
+
+  \indexspace
+
+  \item {port}
+    \subitem {chatgpt\_flask.app}, \hyperpage{8}
+
+  \indexspace
+
+  \item {toggle\_contexto}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.contexto}, \hyperpage{10}
+  \item {tools\_bp}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.tools}, \hyperpage{19}
+
+  \indexspace
+
+  \item {upload\_file\_to\_openai}
+    \subitem {chatgpt\_flask.chatgpt\_api.api.tools}, \hyperpage{18}
+
+\end{theindex}

@@ -1,0 +1,181 @@
+\hypertarget{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1tools}{}\doxysection{chatgpt\+\_\+flask.\+chatgpt\+\_\+api.\+api.\+tools Namespace Reference}
+\label{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1tools}\index{chatgpt\_flask.chatgpt\_api.api.tools@{chatgpt\_flask.chatgpt\_api.api.tools}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1tools_a8030cd00a744472ad064348a13195265}{delete\+\_\+file\+\_\+from\+\_\+openai}} ()
+\begin{DoxyCompactList}\small\item\em Elimina un archivo previamente subido a la API de Open\+AI. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1tools_aa30bd22133f55692ede5a39e9c87938a}{list\+\_\+openai\+\_\+files}} ()
+\begin{DoxyCompactList}\small\item\em Recupera la lista de archivos subidos a la API de Open\+AI. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1tools_a8b0b4b66cc4d80fceca9f9c403610adc}{upload\+\_\+file\+\_\+to\+\_\+openai}} ()
+\begin{DoxyCompactList}\small\item\em Carga un archivo a la API de Open\+AI. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1tools_a702aeac9710461c26267b126325ca82c}{tools\+\_\+bp}} = Blueprint(\textquotesingle{}tools\textquotesingle{}, \+\_\+\+\_\+name\+\_\+\+\_\+, url\+\_\+prefix=\textquotesingle{}/api/tools\textquotesingle{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1tools_a8030cd00a744472ad064348a13195265}\label{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1tools_a8030cd00a744472ad064348a13195265}} 
+\index{chatgpt\_flask.chatgpt\_api.api.tools@{chatgpt\_flask.chatgpt\_api.api.tools}!delete\_file\_from\_openai@{delete\_file\_from\_openai}}
+\index{delete\_file\_from\_openai@{delete\_file\_from\_openai}!chatgpt\_flask.chatgpt\_api.api.tools@{chatgpt\_flask.chatgpt\_api.api.tools}}
+\doxysubsubsection{\texorpdfstring{delete\_file\_from\_openai()}{delete\_file\_from\_openai()}}
+{\footnotesize\ttfamily def delete\+\_\+file\+\_\+from\+\_\+openai (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Elimina un archivo previamente subido a la API de Open\+AI. 
+
+Esta ruta permite eliminar un archivo que ha sido previamente cargado a la API de Open\+AI. Es útil cuando ya no se necesita el archivo o se desea liberar espacio en el sistema.
+
+Esta función espera recibir una solicitud POST con un JSON en el cuerpo que contiene el ID de archivo ({\ttfamily file\+\_\+id}) a eliminar. La respuesta será un objeto JSON confirmando si la eliminación fue exitosa, junto con el ID del archivo eliminado.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+id} & Identificador del archivo que se desea eliminar.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item 200 OK\+: Si el archivo fue eliminado correctamente, devuelve un objeto JSON con la propiedad {\ttfamily deleted} igual a {\ttfamily true} y el {\ttfamily id} del archivo eliminado.
+\item 400 Bad Request\+: Si no se proporciona el parámetro {\ttfamily file\+\_\+id}.
+\item 500 Internal Server Error\+: Si ocurre un error al intentar eliminar el archivo en la API de Open\+AI.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+El parámetro {\ttfamily file\+\_\+id} debe ser una cadena de texto representando el identificador único del archivo en Open\+AI.
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Lanzará} & una excepción si ocurre un error durante la interacción con la API de Open\+AI.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyPrecond}{Precondition}
+El archivo debe haber sido previamente cargado en la API de Open\+AI. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+El archivo será eliminado de manera permanente si se encuentra y se elimina correctamente.
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Ejemplo de solicitud:}
+\DoxyCodeLine{POST /api/tools/delete}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}file\_id"{}}: \textcolor{stringliteral}{"{}file-\/abc123"{}}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{Respuesta esperada:}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}deleted"{}}: true,}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}id"{}}: \textcolor{stringliteral}{"{}file-\/abc123"{}}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item 400\+: El {\ttfamily file\+\_\+id} es obligatorio.
+\item 500\+: Error al comunicarse con Open\+AI. 
+\end{DoxyItemize}
+\end{DoxyNote}
+\mbox{\Hypertarget{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1tools_aa30bd22133f55692ede5a39e9c87938a}\label{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1tools_aa30bd22133f55692ede5a39e9c87938a}} 
+\index{chatgpt\_flask.chatgpt\_api.api.tools@{chatgpt\_flask.chatgpt\_api.api.tools}!list\_openai\_files@{list\_openai\_files}}
+\index{list\_openai\_files@{list\_openai\_files}!chatgpt\_flask.chatgpt\_api.api.tools@{chatgpt\_flask.chatgpt\_api.api.tools}}
+\doxysubsubsection{\texorpdfstring{list\_openai\_files()}{list\_openai\_files()}}
+{\footnotesize\ttfamily def list\+\_\+openai\+\_\+files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Recupera la lista de archivos subidos a la API de Open\+AI. 
+
+Este endpoint recupera la lista de archivos que han sido subidos a la API de Open\+AI, filtrando únicamente aquellos cuyo propósito sea \char`\"{}assistants\char`\"{}. Esto evita incluir archivos de fine-\/tuning u otros usos no relevantes para el sistema de asistentes.
+
+Esta función realiza una solicitud GET a la API de Open\+AI para obtener la lista completa de archivos subidos. Luego filtra los archivos para incluir solo aquellos cuyo propósito es \textquotesingle{}assistants\textquotesingle{}, y retorna la lista filtrada de archivos como un objeto JSON.
+
+\begin{DoxyNote}{Note}
+Este endpoint no requiere parámetros en la solicitud, y solo devuelve archivos relacionados con el uso de asistentes en la API de Open\+AI.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item 200 OK\+: Retorna una lista de archivos cuyo propósito es \textquotesingle{}assistants\textquotesingle{}. Cada archivo tiene los siguientes campos\+:
+\begin{DoxyItemize}
+\item id\+: Identificador único del archivo.
+\item filename\+: Nombre del archivo.
+\item purpose\+: Propósito del archivo (solo \textquotesingle{}assistants\textquotesingle{} será incluido).
+\item status\+: Estado del archivo (ej. \textquotesingle{}processed\textquotesingle{}).
+\item created\+\_\+at\+: Fecha de creación del archivo en formato timestamp.
+\end{DoxyItemize}
+\item 500 Internal Server Error\+: Si ocurre un error al intentar obtener la lista de archivos de la API de Open\+AI.
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Ejemplo de respuesta:}
+\DoxyCodeLine{[}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}id"{}}: \textcolor{stringliteral}{"{}file-\/abc123"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}filename"{}}: \textcolor{stringliteral}{"{}documento.pdf"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}purpose"{}}: \textcolor{stringliteral}{"{}assistants"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}status"{}}: \textcolor{stringliteral}{"{}processed"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}created\_at"{}}: 1710000000}
+\DoxyCodeLine{    \},}
+\DoxyCodeLine{    ...}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item 500\+: Error al comunicarse con la API de Open\+AI o al procesar la respuesta. 
+\end{DoxyItemize}
+\end{DoxyNote}
+\mbox{\Hypertarget{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1tools_a8b0b4b66cc4d80fceca9f9c403610adc}\label{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1tools_a8b0b4b66cc4d80fceca9f9c403610adc}} 
+\index{chatgpt\_flask.chatgpt\_api.api.tools@{chatgpt\_flask.chatgpt\_api.api.tools}!upload\_file\_to\_openai@{upload\_file\_to\_openai}}
+\index{upload\_file\_to\_openai@{upload\_file\_to\_openai}!chatgpt\_flask.chatgpt\_api.api.tools@{chatgpt\_flask.chatgpt\_api.api.tools}}
+\doxysubsubsection{\texorpdfstring{upload\_file\_to\_openai()}{upload\_file\_to\_openai()}}
+{\footnotesize\ttfamily def upload\+\_\+file\+\_\+to\+\_\+openai (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Carga un archivo a la API de Open\+AI. 
+
+Este endpoint permite cargar un archivo a la API de Open\+AI, lo que hace posible su uso con los modelos de Open\+AI, incluyendo GPT-\/4. El archivo debe ser enviado en el cuerpo de la solicitud bajo el formato adecuado (multipart/form-\/data).
+
+El archivo cargado se almacena en la infraestructura de Open\+AI y puede ser utilizado para tareas asociadas con el modelo GPT-\/4. El endpoint espera un archivo y un propósito (como \char`\"{}assistants\char`\"{}) como parámetros.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Archivo que se va a cargar a la API de Open\+AI.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item 200 OK\+: Si el archivo se carga correctamente, se devuelve un objeto JSON con el ID del archivo y otros detalles asociados.
+\item 400 Bad Request\+: Si el archivo no se proporciona o no es válido.
+\item 500 Internal Server Error\+: Si ocurre un error durante el proceso de carga.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item 400\+: Si no se envía un archivo válido en la solicitud.
+\item 500\+: Error al comunicarse con la API de Open\+AI. 
+\end{DoxyItemize}
+\end{DoxyNote}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1tools_a702aeac9710461c26267b126325ca82c}\label{namespacechatgpt__flask_1_1chatgpt__api_1_1api_1_1tools_a702aeac9710461c26267b126325ca82c}} 
+\index{chatgpt\_flask.chatgpt\_api.api.tools@{chatgpt\_flask.chatgpt\_api.api.tools}!tools\_bp@{tools\_bp}}
+\index{tools\_bp@{tools\_bp}!chatgpt\_flask.chatgpt\_api.api.tools@{chatgpt\_flask.chatgpt\_api.api.tools}}
+\doxysubsubsection{\texorpdfstring{tools\_bp}{tools\_bp}}
+{\footnotesize\ttfamily tools\+\_\+bp = Blueprint(\textquotesingle{}tools\textquotesingle{}, \+\_\+\+\_\+name\+\_\+\+\_\+, url\+\_\+prefix=\textquotesingle{}/api/tools\textquotesingle{})}
+

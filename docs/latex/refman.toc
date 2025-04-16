@@ -1,0 +1,86 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Flask Chat API}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Descripción}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Notas}{1}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Namespace Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Package List}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}File Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}File List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Namespace Documentation}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}flask Namespace Reference}{7}{section.4.1}%
+\contentsline {section}{\numberline {4.2}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}flask.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}app Namespace Reference}{7}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Detailed Description}{7}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Function Documentation}{8}{subsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}create\_app()}{8}{subsubsection.4.2.2.1}%
+\contentsline {subsection}{\numberline {4.2.3}Variable Documentation}{8}{subsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.3.1}app}{8}{subsubsection.4.2.3.1}%
+\contentsline {subsubsection}{\numberline {4.2.3.2}debug}{8}{subsubsection.4.2.3.2}%
+\contentsline {subsubsection}{\numberline {4.2.3.3}host}{8}{subsubsection.4.2.3.3}%
+\contentsline {subsubsection}{\numberline {4.2.3.4}port}{8}{subsubsection.4.2.3.4}%
+\contentsline {section}{\numberline {4.3}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}flask.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api Namespace Reference}{8}{section.4.3}%
+\contentsline {section}{\numberline {4.4}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}flask.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api Namespace Reference}{9}{section.4.4}%
+\contentsline {section}{\numberline {4.5}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}flask.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}contexto Namespace Reference}{9}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Function Documentation}{9}{subsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.1.1}obtener\_contexto()}{9}{subsubsection.4.5.1.1}%
+\contentsline {subsubsection}{\numberline {4.5.1.2}toggle\_contexto()}{10}{subsubsection.4.5.1.2}%
+\contentsline {subsection}{\numberline {4.5.2}Variable Documentation}{10}{subsection.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.2.1}contexto\_bp}{10}{subsubsection.4.5.2.1}%
+\contentsline {section}{\numberline {4.6}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}flask.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}conversacion Namespace Reference}{11}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Function Documentation}{11}{subsection.4.6.1}%
+\contentsline {subsubsection}{\numberline {4.6.1.1}historial()}{11}{subsubsection.4.6.1.1}%
+\contentsline {subsubsection}{\numberline {4.6.1.2}nueva\_conversacion()}{11}{subsubsection.4.6.1.2}%
+\contentsline {subsection}{\numberline {4.6.2}Variable Documentation}{12}{subsection.4.6.2}%
+\contentsline {subsubsection}{\numberline {4.6.2.1}conversacion\_bp}{12}{subsubsection.4.6.2.1}%
+\contentsline {section}{\numberline {4.7}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}flask.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}mensaje Namespace Reference}{12}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Function Documentation}{12}{subsection.4.7.1}%
+\contentsline {subsubsection}{\numberline {4.7.1.1}enviar\_mensaje()}{13}{subsubsection.4.7.1.1}%
+\contentsline {subsubsection}{\numberline {4.7.1.2}obtener\_mensajes()}{13}{subsubsection.4.7.1.2}%
+\contentsline {subsection}{\numberline {4.7.2}Variable Documentation}{14}{subsection.4.7.2}%
+\contentsline {subsubsection}{\numberline {4.7.2.1}mensaje\_bp}{14}{subsubsection.4.7.2.1}%
+\contentsline {section}{\numberline {4.8}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}flask.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}modelo Namespace Reference}{14}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}Function Documentation}{14}{subsection.4.8.1}%
+\contentsline {subsubsection}{\numberline {4.8.1.1}actualizar\_modelo()}{14}{subsubsection.4.8.1.1}%
+\contentsline {subsubsection}{\numberline {4.8.1.2}obtener\_modelo()}{15}{subsubsection.4.8.1.2}%
+\contentsline {subsection}{\numberline {4.8.2}Variable Documentation}{16}{subsection.4.8.2}%
+\contentsline {subsubsection}{\numberline {4.8.2.1}modelo\_bp}{16}{subsubsection.4.8.2.1}%
+\contentsline {section}{\numberline {4.9}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}flask.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}tools Namespace Reference}{16}{section.4.9}%
+\contentsline {subsection}{\numberline {4.9.1}Function Documentation}{16}{subsection.4.9.1}%
+\contentsline {subsubsection}{\numberline {4.9.1.1}delete\_file\_from\_openai()}{16}{subsubsection.4.9.1.1}%
+\contentsline {subsubsection}{\numberline {4.9.1.2}list\_openai\_files()}{17}{subsubsection.4.9.1.2}%
+\contentsline {subsubsection}{\numberline {4.9.1.3}upload\_file\_to\_openai()}{18}{subsubsection.4.9.1.3}%
+\contentsline {subsection}{\numberline {4.9.2}Variable Documentation}{19}{subsection.4.9.2}%
+\contentsline {subsubsection}{\numberline {4.9.2.1}tools\_bp}{19}{subsubsection.4.9.2.1}%
+\contentsline {section}{\numberline {4.10}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}flask.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}db Namespace Reference}{19}{section.4.10}%
+\contentsline {subsection}{\numberline {4.10.1}Function Documentation}{19}{subsection.4.10.1}%
+\contentsline {subsubsection}{\numberline {4.10.1.1}close\_db()}{19}{subsubsection.4.10.1.1}%
+\contentsline {subsubsection}{\numberline {4.10.1.2}get\_db()}{20}{subsubsection.4.10.1.2}%
+\contentsline {subsubsection}{\numberline {4.10.1.3}init\_app()}{20}{subsubsection.4.10.1.3}%
+\contentsline {subsection}{\numberline {4.10.2}Variable Documentation}{21}{subsection.4.10.2}%
+\contentsline {subsubsection}{\numberline {4.10.2.1}DATABASE}{21}{subsubsection.4.10.2.1}%
+\contentsline {section}{\numberline {4.11}openai\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}service Namespace Reference}{21}{section.4.11}%
+\contentsline {subsection}{\numberline {4.11.1}Function Documentation}{21}{subsection.4.11.1}%
+\contentsline {subsubsection}{\numberline {4.11.1.1}contar\_tokens()}{21}{subsubsection.4.11.1.1}%
+\contentsline {subsubsection}{\numberline {4.11.1.2}obtener\_respuesta\_openai()}{22}{subsubsection.4.11.1.2}%
+\contentsline {subsubsection}{\numberline {4.11.1.3}obtener\_resumen\_historial()}{23}{subsubsection.4.11.1.3}%
+\contentsline {subsection}{\numberline {4.11.2}Variable Documentation}{23}{subsection.4.11.2}%
+\contentsline {subsubsection}{\numberline {4.11.2.1}api\_key}{23}{subsubsection.4.11.2.1}%
+\contentsline {subsubsection}{\numberline {4.11.2.2}logger}{23}{subsubsection.4.11.2.2}%
+\contentsline {chapter}{\numberline {5}File Documentation}{25}{chapter.5}%
+\contentsline {section}{\numberline {5.1}app.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}py File Reference}{25}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Detailed Description}{25}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Descripción}{25}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Libraries/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Modules}{26}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Notas}{26}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}TODO}{26}{subsection.5.1.5}%
+\contentsline {subsection}{\numberline {5.1.6}Autor(es)}{26}{subsection.5.1.6}%
+\contentsline {section}{\numberline {5.2}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}init\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}py File Reference}{26}{section.5.2}%
+\contentsline {section}{\numberline {5.3}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}init\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}.py File Reference}{26}{section.5.3}%
+\contentsline {section}{\numberline {5.4}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api/api/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}init\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}.py File Reference}{26}{section.5.4}%
+\contentsline {section}{\numberline {5.5}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api/api/contexto.py File Reference}{26}{section.5.5}%
+\contentsline {section}{\numberline {5.6}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api/api/conversacion.py File Reference}{27}{section.5.6}%
+\contentsline {section}{\numberline {5.7}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api/api/mensaje.py File Reference}{27}{section.5.7}%
+\contentsline {section}{\numberline {5.8}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api/api/modelo.py File Reference}{28}{section.5.8}%
+\contentsline {section}{\numberline {5.9}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api/api/tools.py File Reference}{28}{section.5.9}%
+\contentsline {section}{\numberline {5.10}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api/db.py File Reference}{29}{section.5.10}%
+\contentsline {section}{\numberline {5.11}chatgpt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}api/services/openai\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}service.py File Reference}{29}{section.5.11}%
+\contentsline {chapter}{Index}{31}{section*.44}%
