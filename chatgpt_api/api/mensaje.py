@@ -45,11 +45,12 @@ def obtener_mensajes(id):
     resultado = [
         {
             'mensaje': m.mensaje,
-            'es_usuario': m.es_usuario,
+            'es_usuario': bool(m.es_usuario),
             'fecha_creacion': m.fecha_creacion.isoformat() if m.fecha_creacion else None
         }
         for m in mensajes
     ]
+    logging.info(f"[DEBUG] Mensajes recuperados: {resultado}")
     return jsonify(resultado)
 
 @mensaje_bp.route('/api/chat/<int:id>', methods=['POST'])

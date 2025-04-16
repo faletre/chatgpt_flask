@@ -142,7 +142,8 @@ export const UI = {
 
         // Crear el elemento del mensaje
         const messageDiv = document.createElement("div");
-        messageDiv.classList.add("message", message.es_usuario === 1 ? "user" : "bot");
+        /* messageDiv.classList.add("message", message.es_usuario === 1 ? "user" : "bot"); */
+        messageDiv.classList.add("message", message.es_usuario ? "user" : "bot");
         
         try {
             //console.log("[DEBUG UI] Parseando contenido con marked:", message.mensaje);
