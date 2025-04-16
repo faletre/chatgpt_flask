@@ -43,12 +43,13 @@ export const UI = {
      */
     async renderConversationHeader(conv) {
         this.chatHeader.innerHTML = "";
-        const headerContainer = document.createElement("div");
-        headerContainer.classList.add("header-container");
+        // --- Fila superior ---
+        const headerRowTop = document.createElement("div");
+        headerRowTop.classList.add("header-row", "header-row-top");
 
+        // Selector de modelo
         const selectContainer = document.createElement("div");
         selectContainer.classList.add("modelo-selector-container");
-
         const modelSelect = document.createElement("select");
         modelSelect.classList.add("modelo-selector");
         modelSelect.id = `modelo-selector-${conv.id}`;
@@ -57,29 +58,16 @@ export const UI = {
         let modeloActual = conv.modelo;
         try {
             modeloActual = await API.getModel(conv.id);
-            console.log(`[UI] Modelo actualizado para la conversación ${conv.id}:`, modeloActual);
         } catch (error) {
             console.error(`[UI] Error al obtener el modelo actualizado:`, error);
         }
-
         // Obtener modelos dinámicamente desde la API
         let modelos = [];
         try {
-            /**
-             * @description Solicita la lista de modelos disponibles a la API
-             */
-            console.log('[UI] Fetching models for selector...');
             modelos = await API.loadModels();
-            console.log('[UI] Models loaded:', modelos);
         } catch (error) {
-            console.error('[UI] Error fetching models:', error);
-            // Fallback a modelos hardcoded si falla la API
-            modelos = [
-                { id: "gpt-3.5-turbo" },
-                { id: "gpt-4" }
-            ];
+            modelos = [ { id: "gpt-3.5-turbo" }, { id: "gpt-4" } ];
         }
-
         modelos.forEach((modelo) => {
             const option = document.createElement("option");
             option.value = modelo.id || modelo;
@@ -89,63 +77,54 @@ export const UI = {
             }
             modelSelect.appendChild(option);
         });
-
-        // Añadir event listener para el cambio de modelo
         modelSelect.addEventListener("change", async (e) => {
             try {
-                /**
-                 * @description Solicita la actualización del modelo de la conversación
-                 */
-                console.log(`[UI] Changing model for conversation ${conv.id} to`, e.target.value);
                 await API.updateModel(conv.id, e.target.value);
             } catch (error) {
-                console.error("[UI] Error al cambiar el modelo:", error);
-                e.target.value = modeloActual; // Revertir el cambio si hay error
+                e.target.value = modeloActual;
             }
         });
+        selectContainer.appendChild(modelSelect);
 
-        const title = document.createElement("h2");
-        title.textContent = conv.nombre;
-
-        // Crear el contenedor para el switch y su etiqueta
+        // Switch de contexto
         const switchContainer = document.createElement("div");
-        switchContainer.classList.add("context-switch-container");
-
+        switchContainer.classList.add("switch-container");
         const contextSwitch = document.createElement("label");
         contextSwitch.classList.add("switch");
         contextSwitch.id = `context-switch-${conv.id}`;
-
         const input = document.createElement("input");
         input.type = "checkbox";
         input.checked = conv.contexto || false;
-        
         const slider = document.createElement("span");
         slider.classList.add("slider");
-
         const switchLabel = document.createElement("span");
         switchLabel.classList.add("switch-label");
         switchLabel.textContent = "Contexto Conversacional";
-
         contextSwitch.appendChild(input);
         contextSwitch.appendChild(slider);
         switchContainer.appendChild(contextSwitch);
         switchContainer.appendChild(switchLabel);
-
-        // Añadir event listener para el cambio de contexto
         input.addEventListener("change", async (e) => {
             try {
                 await API.toggleContext(conv.id, e.target.checked);
             } catch (error) {
-                console.error("Error al cambiar el contexto:", error);
-                e.target.checked = !e.target.checked; // Revertir el cambio si hay error
+                e.target.checked = !e.target.checked;
             }
         });
 
-        headerContainer.appendChild(title);
-        headerContainer.appendChild(switchContainer);
-        selectContainer.appendChild(modelSelect);
-        this.chatHeader.appendChild(selectContainer);
-        this.chatHeader.appendChild(headerContainer);
+        headerRowTop.appendChild(selectContainer);
+        headerRowTop.appendChild(switchContainer);
+
+        // --- Fila inferior ---
+        const headerRowBottom = document.createElement("div");
+        headerRowBottom.classList.add("header-row", "header-row-bottom");
+        const title = document.createElement("h2");
+        title.textContent = conv.nombre;
+        headerRowBottom.appendChild(title);
+
+        // Añadir ambas filas al header principal
+        this.chatHeader.appendChild(headerRowTop);
+        this.chatHeader.appendChild(headerRowBottom);
     },
 
     /**

@@ -29,20 +29,24 @@
         <div class="chat-area">
 
             <div class="chat-header">
-                <div class="modelo-selector-container">
-                    <select id="modelo-selector">
-                        <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
-                        <option value="gpt-4">GPT-4</option>
-                    </select>
+                <div class="header-row header-row-top">
+                    <div class="modelo-selector-container">
+                        <select id="modelo-selector">
+                            <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                            <option value="gpt-4">GPT-4</option>
+                        </select>
+                    </div>
+                    <div class="switch-container">
+                        <label class="switch" id="context-switch-28">
+                             <input type="checkbox">
+                             <span class="slider"></span>
+                        </label>
+                        <span class="switch-label">Contexto</span>
+                    </div>
                 </div>
-                <div class="header-container">
+                <div class="header-row header-row-bottom">
                     <h2>Pan de pita</h2>
-                    <label class="switch" id="context-switch-28">
-                         <input type="checkbox">
-                         <span class="slider"></span>
-                    </label>
-                    <span class="switch-label">Contexto Conversacional</span>
-               </div>
+                </div>
             </div>
             <div class="chat-content" id="chat-content">
                 <div class="message bot">Hola, ¿en qué puedo ayudarte hoy?</div>

@@ -14,23 +14,54 @@
 
 .chat-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   padding: 10px 20px;
+  gap: 4px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.chat-header h2 {
+.header-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.header-row-top {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modelo-selector-container {
+  min-width: 160px;
+  max-width: 220px;
+  flex-shrink: 0;
+}
+
+.switch-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.header-row-bottom {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.header-row-bottom h2 {
   font-size: 24px;
   margin: 0;
-  flex-grow: 1;
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
-  padding: 10px;
-  align-items: center;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
 }
 
 .chat-content {

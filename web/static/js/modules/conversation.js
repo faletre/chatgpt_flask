@@ -198,6 +198,7 @@ export const ConversationManager = {
             
             this.conversationList.appendChild(li);
         });
+        applySidebarNameTooltips();
     },
 
     /**
@@ -278,3 +279,18 @@ export const ConversationManager = {
         }
     }
 };
+
+// Añadir tooltip y degradado solo a nombres largos en la sidebar
+function applySidebarNameTooltips(maxChars = 18) {
+  document.querySelectorAll('.conversation-name').forEach(el => {
+    if (el.textContent.length > maxChars) {
+      el.setAttribute('data-fullname', el.textContent);
+      el.classList.add('has-tooltip');
+    } else {
+      el.removeAttribute('data-fullname');
+      el.classList.remove('has-tooltip');
+    }
+  });
+}
+
+export { applySidebarNameTooltips };
