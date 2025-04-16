@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from chatgpt_api.db import get_db
+from chatgpt_api.models import Conversacion
 
 contexto_bp = Blueprint('contexto', __name__)
 
@@ -31,16 +32,13 @@ def toggle_contexto(id):
     }
     @endcode
     """
-    db = get_db()
-    cursor = db.cursor()
-    cursor.execute("SELECT contexto FROM conversacion WHERE id = ?", (id,))
-    row = cursor.fetchone()
-    if row is None:
+    db_session = get_db()
+    conv = db_session.query(Conversacion).filter_by(id=id).first()
+    if conv is None:
         return jsonify({'error': 'Conversación no encontrada'}), 404
-    nuevo_estado = not bool(row['contexto'])
-    cursor.execute("UPDATE conversacion SET contexto = ? WHERE id = ?", (nuevo_estado, id))
-    db.commit()
-    return jsonify({'contexto': nuevo_estado})
+    conv.contexto = not conv.contexto
+    db_session.commit()
+    return jsonify({'contexto': conv.contexto})
 
 
 @contexto_bp.route('/api/contexto/<int:id>', methods=['GET'])
@@ -71,10 +69,8 @@ def obtener_contexto(id):
     }
     @endcode
     """
-    db = get_db()
-    cursor = db.cursor()
-    cursor.execute("SELECT contexto FROM conversacion WHERE id = ?", (id,))
-    row = cursor.fetchone()
-    if row is None:
+    db_session = get_db()
+    conv = db_session.query(Conversacion).filter_by(id=id).first()
+    if conv is None:
         return jsonify({'error': 'Conversación no encontrada'}), 404
-    return jsonify({'contexto': bool(row['contexto'])})
+    return jsonify({'contexto': conv.contexto})

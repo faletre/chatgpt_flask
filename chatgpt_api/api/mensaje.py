@@ -1,7 +1,7 @@
 import logging
-
 from flask import Blueprint, request, jsonify
 from chatgpt_api.db import get_db
+from chatgpt_api.models import Mensaje, Conversacion
 from chatgpt_api.services.openai_service import obtener_respuesta_openai, obtener_resumen_historial, contar_tokens
 
 mensaje_bp = Blueprint('mensaje', __name__)
@@ -40,10 +40,17 @@ def obtener_mensajes(id):
     ]
     @endcode
     """
-    db = get_db()
-    cursor = db.execute("SELECT mensaje, es_usuario, fecha_creacion FROM mensaje WHERE conversacion_id = ? ORDER BY fecha_creacion", (id,))
-    mensajes = [dict(row) for row in cursor.fetchall()]
-    return jsonify(mensajes)
+    db_session = get_db()
+    mensajes = db_session.query(Mensaje).filter_by(conversacion_id=id).order_by(Mensaje.fecha_creacion).all()
+    resultado = [
+        {
+            'mensaje': m.mensaje,
+            'es_usuario': m.es_usuario,
+            'fecha_creacion': m.fecha_creacion.isoformat() if m.fecha_creacion else None
+        }
+        for m in mensajes
+    ]
+    return jsonify(resultado)
 
 @mensaje_bp.route('/api/chat/<int:id>', methods=['POST'])
 def enviar_mensaje(id):
@@ -86,15 +93,16 @@ def enviar_mensaje(id):
     if not mensaje_usuario:
         return jsonify({'error': 'Mensaje vacío'}), 400
 
-    db = get_db()
-    cursor = db.cursor()
-
-    cursor.execute("SELECT mensaje, es_usuario FROM mensaje WHERE conversacion_id = ? ORDER BY fecha_creacion", (id,))
-    mensajes_historial = [{'role': 'user' if msg['es_usuario'] else 'assistant', 'content': msg['mensaje']} for msg in cursor.fetchall()]
-
-    cursor.execute("SELECT contexto FROM conversacion WHERE id = ?", (id,))
-    contexto_activado = cursor.fetchone()['contexto']
-
+    db_session = get_db()
+    mensajes_db = db_session.query(Mensaje).filter_by(conversacion_id=id).order_by(Mensaje.fecha_creacion).all()
+    mensajes_historial = [
+        {'role': 'user' if msg.es_usuario else 'assistant', 'content': msg.mensaje}
+        for msg in mensajes_db
+    ]
+    conv = db_session.query(Conversacion).filter_by(id=id).first()
+    if not conv:
+        return jsonify({'error': 'Conversación no encontrada'}), 404
+    contexto_activado = conv.contexto
     if contexto_activado:
         mensajes_historial.append({'role': 'user', 'content': mensaje_usuario})
         num_tokens = contar_tokens(mensajes_historial)
@@ -103,23 +111,16 @@ def enviar_mensaje(id):
             mensajes_historial = [{'role': 'user', 'content': mensaje_usuario}, {'role': 'assistant', 'content': resumen}]
     else:
         mensajes_historial = [{'role': 'user', 'content': mensaje_usuario}]
-
-    logging.info(f"[DEBUG] SELECT modelo FROM conversacion WHERE id = {id}")
-    cursor.execute("SELECT modelo FROM conversacion WHERE id = ?", (id,))
-    modelo = cursor.fetchone()['modelo']
-
-    # Se le pide a GPT que la salida tenga siempre el formato Markdown, pues es lo que se espera.
+    modelo = conv.modelo
     if not any(msg['role'] == 'system' for msg in mensajes_historial):
         mensajes_historial.insert(0, {"role": "system", "content": "Salida formato Markdown"})
-
     logging.info(f"[DEBUG] Enviando historial al modelo {modelo}.")
     respuesta = obtener_respuesta_openai(mensajes_historial, modelo)
-
     if "Error" in respuesta:
         return jsonify({'error': respuesta}), 500
-
-    cursor.execute("INSERT INTO mensaje (conversacion_id, mensaje, es_usuario) VALUES (?, ?, 1)", (id, mensaje_usuario))
-    cursor.execute("INSERT INTO mensaje (conversacion_id, mensaje, es_usuario) VALUES (?, ?, 0)", (id, respuesta))
-    db.commit()
-
+    nuevo_mensaje = Mensaje(conversacion_id=id, mensaje=mensaje_usuario, es_usuario=True)
+    db_session.add(nuevo_mensaje)
+    nuevo_mensaje_ia = Mensaje(conversacion_id=id, mensaje=respuesta, es_usuario=False)
+    db_session.add(nuevo_mensaje_ia)
+    db_session.commit()
     return jsonify({'respuesta': respuesta})

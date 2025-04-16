@@ -1,5 +1,13 @@
 from flask import Blueprint, request, jsonify
 from chatgpt_api.db import get_db
+from chatgpt_api.models import Conversacion, Mensaje
+
+def conversacion_to_dict(conv):
+    return {
+        'id': conv.id,
+        'nombre': conv.nombre,
+        'fecha_creacion': conv.fecha_creacion.isoformat() if conv.fecha_creacion else None
+    }
 
 conversacion_bp = Blueprint('conversacion', __name__)
 
@@ -38,12 +46,11 @@ def nueva_conversacion():
     """
     data = request.get_json()
     nombre = data.get('nombre', 'Nueva Conversación')
-    db = get_db()
-    cursor = db.cursor()
-    cursor.execute("INSERT INTO conversacion (nombre) VALUES (?)", (nombre,))
-    db.commit()
-    nueva_id = cursor.lastrowid
-    return jsonify({'id': nueva_id, 'nombre': nombre}), 201
+    db_session = get_db()
+    nueva_conv = Conversacion(nombre=nombre)
+    db_session.add(nueva_conv)
+    db_session.commit()
+    return jsonify({'id': nueva_conv.id, 'nombre': nueva_conv.nombre}), 201
 
 
 @conversacion_bp.route('/api/historial', methods=['GET'])
@@ -74,9 +81,9 @@ def historial():
     ]
     @endcode
     """
-    db = get_db()
-    cursor = db.execute("SELECT * FROM conversacion ORDER BY fecha_creacion DESC")
-    resultados = [dict(row) for row in cursor.fetchall()]
+    db_session = get_db()
+    conversaciones = db_session.query(Conversacion).order_by(Conversacion.fecha_creacion.desc()).all()
+    resultados = [conversacion_to_dict(conv) for conv in conversaciones]
     return jsonify(resultados)
 
 
@@ -111,12 +118,14 @@ def eliminar_conversacion(id):
     Este endpoint realiza dos operaciones de borrado: una para los mensajes y otra para la conversación.
     El borrado se efectúa de forma transaccional.
     """
-    db = get_db()
-    cursor = db.cursor()
-    cursor.execute("DELETE FROM mensaje WHERE conversacion_id = ?", (id,))
-    cursor.execute("DELETE FROM conversacion WHERE id = ?", (id,))
-    db.commit()
-    return jsonify({'mensaje': 'Conversación eliminada correctamente'})
+    db_session = get_db()
+    conv = db_session.query(Conversacion).filter_by(id=id).first()
+    if conv:
+        db_session.delete(conv)
+        db_session.commit()
+        return jsonify({'mensaje': 'Conversación eliminada correctamente'})
+    else:
+        return jsonify({'error': 'Conversación no encontrada'}), 404
 
 
 @conversacion_bp.route('/api/cambiar_nombre_conversacion/<int:id>', methods=['PUT'])
@@ -161,7 +170,11 @@ def cambiar_nombre(id):
     if not nuevo_nombre:
         return jsonify({'error': 'Nombre vacío'}), 400
 
-    db = get_db()
-    db.execute("UPDATE conversacion SET nombre = ? WHERE id = ?", (nuevo_nombre, id))
-    db.commit()
-    return jsonify({'mensaje': 'Nombre actualizado correctamente', 'nuevo_nombre': nuevo_nombre})
+    db_session = get_db()
+    conv = db_session.query(Conversacion).filter_by(id=id).first()
+    if conv:
+        conv.nombre = nuevo_nombre
+        db_session.commit()
+        return jsonify({'mensaje': 'Nombre actualizado correctamente', 'nuevo_nombre': nuevo_nombre})
+    else:
+        return jsonify({'error': 'Conversación no encontrada'}), 404

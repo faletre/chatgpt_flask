@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from chatgpt_api.db import get_db
+from chatgpt_api.models import Conversacion
 
 modelo_bp = Blueprint('modelo', __name__)
 
@@ -31,13 +32,11 @@ def obtener_modelo(id):
     }
     @endcode
     """
-    db = get_db()
-    cursor = db.cursor()
-    cursor.execute("SELECT modelo FROM conversacion WHERE id = ?", (id,))
-    row = cursor.fetchone()
-    if row is None:
+    db_session = get_db()
+    conv = db_session.query(Conversacion).filter_by(id=id).first()
+    if conv is None:
         return jsonify({'error': 'Conversación no encontrada'}), 404
-    return jsonify({'modelo': row['modelo']})
+    return jsonify({'modelo': conv.modelo})
 
 
 @modelo_bp.route('/api/modelo/<int:id>', methods=['PUT'])
@@ -80,13 +79,14 @@ def actualizar_modelo(id):
     }
     @endcode
     """
-    db = get_db()
-    cursor = db.cursor()
+    db_session = get_db()
     data = request.get_json()
     nuevo_modelo = data.get('modelo')
-    modelos_permitidos = ['gpt-3.5-turbo', 'gpt-4']
-    if nuevo_modelo not in modelos_permitidos:
-        return jsonify({'error': f'Modelo no válido. Modelos permitidos: {", ".join(modelos_permitidos)}'}), 400
-    cursor.execute("UPDATE conversacion SET modelo = ? WHERE id = ?", (nuevo_modelo, id))
-    db.commit()
-    return jsonify({'mensaje': 'Modelo actualizado correctamente', 'modelo': nuevo_modelo})
+    if nuevo_modelo not in ['gpt-3.5-turbo', 'gpt-4']:
+        return jsonify({'error': 'Modelo no permitido'}), 400
+    conv = db_session.query(Conversacion).filter_by(id=id).first()
+    if conv is None:
+        return jsonify({'error': 'Conversación no encontrada'}), 404
+    conv.modelo = nuevo_modelo
+    db_session.commit()
+    return jsonify({'mensaje': 'Modelo actualizado correctamente', 'modelo': conv.modelo})

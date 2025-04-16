@@ -29,7 +29,7 @@ def obtener_respuesta_openai(mensajes_historial, modelo):
 
     @note
     La función realiza una solicitud a OpenAI usando el método `openai.chat.completions.create`, y tiene configurado 
-    un límite de tokens de 550.
+    un límite de tokens de 1550.
 
     @code
     Ejemplo de uso:
@@ -42,7 +42,7 @@ def obtener_respuesta_openai(mensajes_historial, modelo):
         response = openai.chat.completions.create(
             model=modelo,
             messages=mensajes_historial,
-            max_tokens=550,
+            max_tokens=1550,
             temperature=0.7,
         )
         return response.choices[0].message.content

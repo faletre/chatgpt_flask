@@ -1,11 +1,9 @@
-import sqlite3
+from sqlalchemy import inspect
+from db import db_engine
 
-conn = sqlite3.connect("chatgpt.db")
-cur = conn.cursor()
-
-cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
-tablas = cur.fetchall()
+inspector = inspect(db_engine)
+tablas = inspector.get_table_names()
 
 print("Tablas en la base de datos:")
 for tabla in tablas:
-    print(f"- {tabla[0]}")
+    print(f"- {tabla}")
