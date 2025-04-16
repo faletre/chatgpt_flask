@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from chatgpt_api.db import get_db
 from chatgpt_api.models import Conversacion
+from chatgpt_api.services.openai_service import get_available_models
 
 modelo_bp = Blueprint('modelo', __name__)
 
@@ -47,7 +48,7 @@ def actualizar_modelo(id):
     @details
     Este endpoint permite actualizar el modelo de una conversación almacenada
     en la base de datos. Se valida que el nuevo modelo sea uno de los permitidos
-    (`gpt-3.5-turbo` o `gpt-4`).
+    (dinámicamente desde la caché OpenAI).
 
     @param id Identificador único de la conversación.
     @param modelo El modelo a actualizar, que debe ser uno de los modelos permitidos.
@@ -55,34 +56,12 @@ def actualizar_modelo(id):
     @return
     - 200 OK: Si el modelo se actualiza correctamente, devuelve un mensaje de éxito y el nuevo modelo.
     - 400 Bad Request: Si el modelo proporcionado no es válido.
-
-    @note
-    Los modelos permitidos son: `gpt-3.5-turbo` y `gpt-4`. Si se intenta actualizar con un modelo diferente,
-    se devuelve un error 400.
-
-    @throws Exception: Lanza una excepción si ocurre un error al actualizar la base de datos.
-
-    @pre La conversación debe existir en la base de datos con el ID proporcionado.
-    @post El modelo de la conversación será actualizado con el nuevo modelo.
-
-    @code
-    Ejemplo de solicitud:
-    PUT /api/modelo/1
-    {
-        "modelo": "gpt-4"
-    }
-
-    Respuesta esperada:
-    {
-        "mensaje": "Modelo actualizado correctamente",
-        "modelo": "gpt-4"
-    }
-    @endcode
     """
     db_session = get_db()
     data = request.get_json()
     nuevo_modelo = data.get('modelo')
-    if nuevo_modelo not in ['gpt-3.5-turbo', 'gpt-4']:
+    modelos_disponibles = [m["id"] for m in get_available_models()]
+    if nuevo_modelo not in modelos_disponibles:
         return jsonify({'error': 'Modelo no permitido'}), 400
     conv = db_session.query(Conversacion).filter_by(id=id).first()
     if conv is None:
@@ -90,3 +69,12 @@ def actualizar_modelo(id):
     conv.modelo = nuevo_modelo
     db_session.commit()
     return jsonify({'mensaje': 'Modelo actualizado correctamente', 'modelo': conv.modelo})
+
+# Endpoint para obtener la lista de modelos disponibles
+@modelo_bp.route('/api/models', methods=['GET'])
+def listar_modelos():
+    """
+    @brief Devuelve la lista de modelos disponibles (dinámicamente desde la caché OpenAI).
+    """
+    modelos = get_available_models()
+    return jsonify({"models": modelos})
