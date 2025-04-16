@@ -29,16 +29,27 @@
   }
   
   #send-btn {
-    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
     background-color: #16a085;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 20px;
   }
-  
+
+  #send-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
   #send-btn:hover {
     background-color: #1abc9c;
   }
-  
