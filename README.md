@@ -32,7 +32,6 @@ chatgpt_flask/
 │
 ├── docs/                    # Documentation (Doxygen, etc.)
 │
-├── flaskchat.service        # Example systemd service file for backend
 └── ...
 ```
 
