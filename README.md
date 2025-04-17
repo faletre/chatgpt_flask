@@ -20,14 +20,38 @@ chatgpt_flask/
 │   ├── app.py
 │   └── chatgpt_api/
 │       ├── api/
+│       │   ├── contexto.py
+│       │   ├── conversacion.py
+│       │   ├── mensaje.py
+│       │   ├── modelo.py
+│       │   └── tools.py
 │       ├── db.py
 │       ├── db_init/
+│       │   ├── add_modelo_a_conversacion_SQL.py
+│       │   ├── crear_db.py
+│       │   ├── crear_db_con_modelo.py
+│       │   └── verificar_db.py
 │       ├── models.py
 │       └── services/
+│           └── openai_service.py
 │
 ├── frontend/                # Static frontend (HTML, JS, CSS, SCSS, images)
 │   ├── web/
-│   │   └── chattest.html
+│   │   ├── chattest.html
+│   │   └── static/
+│   │       ├── css/
+│   │       │   ├── main.css
+│   │       │   └── main.min.css
+│   │       ├── images/
+│   │       │   ├── favicon.ico
+│   │       │   └── flaskchat-logo.png
+│   │       ├── js/
+│   │       │   ├── main.js
+│   │       │   └── modules/
+│   │       │       ├── api.js
+│   │       │       ├── conversation.js
+│   │       │       ├── events.js
+│   │       │       └── ui.js
 │   └── scss/
 │
 ├── docs/                    # Documentation (Doxygen, etc.)
