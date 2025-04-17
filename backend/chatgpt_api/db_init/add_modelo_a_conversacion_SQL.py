@@ -1,7 +1,7 @@
 import sqlite3
 from sqlalchemy import inspect
-from db import db_engine
-from models import Conversacion, Base
+from chatgpt_api.db import db_engine
+from chatgpt_api.models import Conversacion, Base
 
 def agregar_columna_modelo_si_no_existe(db_path='chatgpt.db'):
     # Usando SQLAlchemy para inspección

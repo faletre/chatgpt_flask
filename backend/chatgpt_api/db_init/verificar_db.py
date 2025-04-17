@@ -1,5 +1,5 @@
 from sqlalchemy import inspect
-from db import db_engine
+from chatgpt_api.db import db_engine
 
 inspector = inspect(db_engine)
 tablas = inspector.get_table_names()
