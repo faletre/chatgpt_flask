@@ -7,7 +7,7 @@ This project provides a self-hosted web interface to use OpenAI's ChatGPT models
 **See it in action:**
 Interact with ChatGPT models, switch context, and manage conversations — all in one place.
 
-!Demo(docs/usage_sample.gif)
+![Demo](docs/usage_sample.gif)
 
 ---
 
