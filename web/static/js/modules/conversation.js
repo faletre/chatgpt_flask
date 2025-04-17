@@ -280,31 +280,13 @@ export const ConversationManager = {
     }
 };
 
-// Añadir tooltip y degradado solo a nombres largos en la sidebar
+// Añadir tooltip nativo solo a nombres largos en la sidebar
 function applySidebarNameTooltips(maxChars = 18) {
   document.querySelectorAll('.conversation-name').forEach(el => {
     if (el.textContent.length > maxChars) {
-      el.setAttribute('data-fullname', el.textContent);
-      el.classList.add('has-tooltip');
-      // Limpia listeners previos
-      el.onmouseenter = null;
-      el.onmouseleave = null;
-      let tooltipTimeout;
-      el.addEventListener('mouseenter', function() {
-        tooltipTimeout = setTimeout(() => {
-          el.classList.add('show-tooltip');
-        }, 500);
-      });
-      el.addEventListener('mouseleave', function() {
-        clearTimeout(tooltipTimeout);
-        el.classList.remove('show-tooltip');
-      });
+      el.setAttribute('title', el.textContent);
     } else {
-      el.removeAttribute('data-fullname');
-      el.classList.remove('has-tooltip');
-      el.classList.remove('show-tooltip');
-      el.onmouseenter = null;
-      el.onmouseleave = null;
+      el.removeAttribute('title');
     }
   });
 }

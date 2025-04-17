@@ -69,43 +69,20 @@
   cursor: pointer;
 }
 
-.conversation-name.has-tooltip::after {
-  content: attr(data-fullname);
-  position: absolute;
-  left: 0;
-  top: 120%;
-  background: #222;
-  color: #fff;
-  padding: 4px 12px;
-  border-radius: 5px;
-  white-space: pre;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 10;
-  transition: opacity 0.2s;
-  font-size: 1rem;
-  max-width: 350px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-
-.conversation-name.has-tooltip.show-tooltip::after {
-  opacity: 1;
-  pointer-events: auto;
-  animation: tooltip-fadein 0.2s 0.0s forwards;
-}
-
-@keyframes tooltip-fadein {
-  to { opacity: 1; pointer-events: auto; }
-}
-
 .actions-container {
   display: flex;
   flex-shrink: 0;
   gap: 4px;
   align-items: center;
   margin-left: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+li.conversation-item:hover .actions-container {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .edit-btn, .delete-btn {
