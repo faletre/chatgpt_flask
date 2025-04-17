@@ -37,7 +37,7 @@
   position: relative;
   width: 100%;
   box-sizing: border-box;
-  transition: background 0.3s ease;
+  min-width: 0;
 }
 
 .conversation-item:hover {
@@ -55,20 +55,21 @@
 
 .conversation-name {
   flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 0;
   transition: opacity 0.3s ease;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clip;
-  max-width: 90%;
+  max-width: calc(100% - 63px);
   position: relative;
-  display: inline-block;
   vertical-align: middle;
   -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
   mask-image: linear-gradient(to right, black 80%, transparent 100%);
   cursor: pointer;
 }
 
-.conversation-name.has-tooltip:hover::after {
+.conversation-name.has-tooltip::after {
   content: attr(data-fullname);
   position: absolute;
   left: 0;
@@ -87,11 +88,43 @@
   overflow: hidden;
   text-overflow: ellipsis;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  animation: tooltip-fadein 0.2s 0.5s forwards;
+}
+
+.conversation-name.has-tooltip.show-tooltip::after {
+  opacity: 1;
+  pointer-events: auto;
+  animation: tooltip-fadein 0.2s 0.0s forwards;
 }
 
 @keyframes tooltip-fadein {
   to { opacity: 1; pointer-events: auto; }
+}
+
+.actions-container {
+  display: flex;
+  flex-shrink: 0;
+  gap: 4px;
+  align-items: center;
+  margin-left: 4px;
+}
+
+.edit-btn, .delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  line-height: 1;
+  transition: background 0.2s;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+  background: #222;
+  color: #fff;
+  border-radius: 3px;
 }
 
 .conversation-name-input {
