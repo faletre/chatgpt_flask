@@ -1,7 +1,8 @@
-# Flask ChatGPT Web Application
+# ChatGPT Pay-As-You-Go Web App
 
-A web-based chat application utilizing OpenAI's models, with a modular Python (Flask) backend and a modern, static frontend.  
-Backend and frontend are fully decoupled and can be deployed independently.
+**Purpose:**
+
+This project provides a self-hosted web interface to use OpenAI's ChatGPT models in a "pay-as-you-go" fashion via the official API. If you want access to all available GPT models without being tied to a fixed monthly subscription, this application is for you. You pay only for what you use, with no time limits or quotas, leveraging your own OpenAI API key. The app is ideal for users who want flexibility, full model availability, and cost control for personal or small-team usage.
 
 ---
 
