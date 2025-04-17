@@ -68,6 +68,12 @@ export const UI = {
         } catch (error) {
             modelos = [ { id: "gpt-3.5-turbo" }, { id: "gpt-4" } ];
         }
+        // ORDENAR ALFABÉTICAMENTE POR id
+        modelos.sort((a, b) => {
+            const aId = a.id || a;
+            const bId = b.id || b;
+            return aId.localeCompare(bId, 'es', { sensitivity: 'base' });
+        });
         modelos.forEach((modelo) => {
             const option = document.createElement("option");
             option.value = modelo.id || modelo;
