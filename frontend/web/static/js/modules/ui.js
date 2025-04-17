@@ -191,10 +191,10 @@ export const UI = {
                 return;
             }
         }
-
+        console.log("[DEBUG UI] Cargando lenguajes dinámicamente");
         const bloques = document.querySelectorAll('pre code[class^="language-"]');
         if (!bloques.length) return;
-
+        console.log("[DEBUG UI] Encontrados bloques:", bloques.length);
         const lenguajesCargados = new Set();
         const promesasCarga = [];
 
@@ -204,6 +204,7 @@ export const UI = {
             
             if (lenguaje) {
                 const nombreLenguaje = lenguaje.replace('language-', '');
+                console.log(`[DEBUG] Procesando lenguaje: ${nombreLenguaje}`);
                 if (!lenguajesCargados.has(nombreLenguaje) && !Prism.languages[nombreLenguaje]) {
                     console.log(`[DEBUG] Cargando lenguaje: ${nombreLenguaje}`);
                     lenguajesCargados.add(nombreLenguaje);

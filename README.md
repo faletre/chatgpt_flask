@@ -4,6 +4,11 @@
 
 This project provides a self-hosted web interface to use OpenAI's ChatGPT models in a "pay-as-you-go" fashion via the official API. If you want access to all available GPT models without being tied to a fixed monthly subscription, this application is for you. You pay only for what you use, with no time limits or quotas, leveraging your own OpenAI API key. The app is ideal for users who want flexibility, full model availability, and cost control for personal or small-team usage.
 
+**See it in action:**
+Interact with ChatGPT models, switch context, and manage conversations — all in one place.
+
+!Demo(docs/usage_sample.gif)
+
 ---
 
 ## 📁 Project Structure
@@ -80,8 +85,7 @@ chatgpt_flask/
 
 ### **Running as a Service (Recommended for Production)**
 
-A sample `systemd` service file is provided ([flaskchat.service](flaskchat.service)).  
-**Do not store your OpenAI API key in the repository for security!**
+A sample `systemd` service file is provided as follows:
 
 Example configuration (`/etc/systemd/system/flaskchat.service`):
 
